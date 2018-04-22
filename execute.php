@@ -1,6 +1,6 @@
 <?php
 
-require 'log_debug.php';
+require_once 'log_debug.php';
 
 $var = array("cipolle", "mele");
 
