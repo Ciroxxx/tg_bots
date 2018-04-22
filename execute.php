@@ -1,4 +1,11 @@
 <?php
+
+require 'log_debug.php';
+
+$var = array("cipolle", "mele");
+
+log_debug($var,'logging var');
+
 $content = file_get_contents("php://input");
 $update = json_decode($content, true);
 if(!$update)
