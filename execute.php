@@ -2,12 +2,14 @@
 
 require_once 'log_debug.php';
 
-$var = array("cipolle", "mele");
-
-log_debug($var,'logging var');
-
 $content = file_get_contents("php://input");
+
+log_debug($content, 'logging $content: ');
+
 $update = json_decode($content, true);
+
+log_debug($content, 'logging $update: ');
+
 if(!$update)
 {
   exit;
