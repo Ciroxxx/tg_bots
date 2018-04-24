@@ -4,11 +4,9 @@ require_once 'log_debug.php';
 
 $content = file_get_contents("php://input");
 
-log_debug($content, 'logging $content: ');
-
 $update = json_decode($content, true);
 
-log_debug($content, 'logging $update: ');
+log_debug($update, 'logging $update');
 
 if(!$update)
 {
