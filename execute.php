@@ -41,6 +41,10 @@ elseif($text=="/mine")
 {
 	$response = "Grazie! Con le tue risorse ho creato una monetina, TIN!!!";
 }
+elseif($text=="/gnocca")
+{
+    $url = "http://static2.oggi.it/wp-content/uploads/sites/6/2015/03/INTIMISSIMI518.jpg?v=1425547126";
+}
 else
 {
 	$response = "Comando non valido!";
@@ -48,6 +52,12 @@ else
 
 log_debug($text, 'logging $text');
 
-$parameters = array('chat_id' => $chatId, "text" => $response);
-$parameters["method"] = "sendMessage";
+if($text === "/gnocca"){
+    $parameters = array('chat_id' => $chatId, "photo" => $url);
+    $parameters["method"] = "sendPhoto";    
+} else {
+    $parameters = array('chat_id' => $chatId, "text" => $response);
+    $parameters["method"] = "sendMessage";
+}
+
 echo json_encode($parameters);
