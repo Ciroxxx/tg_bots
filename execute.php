@@ -27,7 +27,7 @@ header("Content-Type: application/json");
 
 $response = '';
 
-if($message['entities'][0]['type'] === 'bot_command') $text = substr($text, 0, strpos($text, '@'));
+if($message['entities'][0]['type'] === 'bot_command' && $at_pos = strpos($text, '@')) $text = substr($text, 0, $at_pos);
 
 if(strpos($text, "/start") === 0 || $text=="ciao")
 {
