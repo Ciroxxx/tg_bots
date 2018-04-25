@@ -22,19 +22,23 @@ $date = isset($message['date']) ? $message['date'] : "";
 $text = isset($message['text']) ? $message['text'] : "";
 $text = trim($text);
 $text = strtolower($text);
+
 header("Content-Type: application/json");
+
 $response = '';
+
+
 if(strpos($text, "/start") === 0 || $text=="ciao")
 {
-	$response = "Ciao $firstname, benvenuto!";
+	$response = "Ciao $firstname, ti stimo";
 }
-elseif($text=="domanda 1")
+elseif($text=="/kill")
 {
-	$response = "risposta 1";
+	$response = "bang, sei morto stronzo";
 }
-elseif($text=="domanda 2")
+elseif($text=="/mine")
 {
-	$response = "risposta 2";
+	$response = "Grazie! Con le tue risorse ho creato una monetina, TIN!!!";
 }
 else
 {
