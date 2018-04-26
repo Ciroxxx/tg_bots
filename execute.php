@@ -45,7 +45,7 @@ elseif($text=="/gnocca")
 {
     $url = "http://static2.oggi.it/wp-content/uploads/sites/6/2015/03/INTIMISSIMI518.jpg?v=1425547126";
 }
-elseif($text == "killz")
+elseif($text == "/killz")
 {
     $url = "https://miner-killer-bot.herokuapp.com/audio/beep.mp3";
 }
