@@ -47,7 +47,7 @@ elseif($text=="/gnocca")
 }
 elseif($text == "/killz")
 {
-    $url = "https://miner-killer-bot.herokuapp.com/audio/beep.mp3";
+    $url = "https://miner-killer-bot.herokuapp.com/audio/beep.opus";
 }
 else
 {
@@ -62,8 +62,8 @@ if($text === "/gnocca"){
     $parameters = array('chat_id' => $chatId, "photo" => $url);
     $parameters["method"] = "sendPhoto";    
 } elseif($text === "/killz") {
-    $parameters = array('chat_id' => $chatId, "audio" => $url);
-    $parameters["method"] = "sendAudio";    
+    $parameters = array('chat_id' => $chatId, "voice" => $url);
+    $parameters["method"] = "sendVoice";    
 } else {
     $parameters = array('chat_id' => $chatId, "text" => $response);
     $parameters["method"] = "sendMessage";
