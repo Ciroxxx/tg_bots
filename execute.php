@@ -55,12 +55,13 @@ else
 }
 
 log_debug($text, 'logging $text');
-log_debug($_SERVER['HTTP_HOST'], '$_SERVER["HTTP_HOST"]');
-log_debug($_SERVER['SERVER_NAME'], '$_SERVER["SERVER_NAME"]');
+log_debug($_SERVER['HTTP_HOST'], 'HTTP_HOST');
+log_debug($_SERVER['SERVER_NAME'], 'SERVER_NAME');
+
 if($text === "/gnocca"){
     $parameters = array('chat_id' => $chatId, "photo" => $url);
     $parameters["method"] = "sendPhoto";    
-} elseif($text === "/killz" {
+} elseif($text === "/killz") {
     $parameters = array('chat_id' => $chatId, "audio" => $url);
     $parameters["method"] = "sendAudio";    
 } else {
