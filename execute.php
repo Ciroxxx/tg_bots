@@ -45,16 +45,24 @@ elseif($text=="/gnocca")
 {
     $url = "http://static2.oggi.it/wp-content/uploads/sites/6/2015/03/INTIMISSIMI518.jpg?v=1425547126";
 }
+elseif($text == "killz")
+{
+    $url = "https://miner-killer-bot.herokuapp.com/audio/beep.mp3";
+}
 else
 {
 	$response = "Comando non valido!";
 }
 
 log_debug($text, 'logging $text');
-
+log_debug($_SERVER['HTTP_HOST'], '$_SERVER["HTTP_HOST"]');
+log_debug($_SERVER['SERVER_NAME'], '$_SERVER["SERVER_NAME"]');
 if($text === "/gnocca"){
     $parameters = array('chat_id' => $chatId, "photo" => $url);
     $parameters["method"] = "sendPhoto";    
+} elseif($text === "/killz" {
+    $parameters = array('chat_id' => $chatId, "audio" => $url);
+    $parameters["method"] = "sendAudio";    
 } else {
     $parameters = array('chat_id' => $chatId, "text" => $response);
     $parameters["method"] = "sendMessage";
