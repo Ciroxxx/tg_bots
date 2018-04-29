@@ -46,7 +46,7 @@ elseif($text=="/mine")
 elseif($text=="/gnocca")
 {
     $gnocca = google_images_search("sexy");
-    log_debug($gnocca, 'logging gnocca');
+    //log_debug($gnocca, 'logging gnocca');
     
     if($gnocca){
         $url = pick_random($gnocca);

@@ -1,6 +1,9 @@
 <?php
 
 function google_images_search($string){//gets term to search, returns urls to images
+    
+    $start = rand(1,100);
+    
     $query_url = "https://www.googleapis.com/customsearch/v1?";
 
     $google_search_params = array(
@@ -9,7 +12,8 @@ function google_images_search($string){//gets term to search, returns urls to im
         "key" => "AIzaSyA4H9Je_epjF9G-s5ibU7d0-qO7T4i4ucU",
         "cx" => "007307369367147993290:mvp2ald3mrm",
         "search_type" => "image",
-        "lr" => "lang_it"
+        "lr" => "lang_it",
+        "start" => $start
     );
 
     foreach($google_search_params as $key => $val){
@@ -36,7 +40,7 @@ function google_images_search($string){//gets term to search, returns urls to im
     $results = curl_exec($ch);
 
     $results = json_decode($results);
-    log_debug($results, 'logging image search results');
+    //log_debug($results, 'logging image search results');
     curl_close($ch);
     
     $images_url = array();
