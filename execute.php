@@ -4,8 +4,6 @@ require_once 'log_debug.php';
 require_once 'functions.php';
 
 
-
-
 $content = file_get_contents("php://input");
 
 $update = json_decode($content, true);
@@ -48,15 +46,15 @@ elseif($text=="/mine")
 elseif($text=="/gnocca")
 {
     $gnocca = google_images_search("gnocca");
-    log_debug($gnocca);
+    log_debug($gnocca, 'logging gnocca');
     
     if($gnocca){
         $url = pick_random($gnocca);
     } else {
-        $url = $url = "https://miner-killer-bot.herokuapp.com/images/no_gnocca.jpg";
+        $url = "https://miner-killer-bot.herokuapp.com/images/no_gnocca.jpg";
     }
 
-}
+} 
 elseif($text == "/killz")
 {
     $url = "https://miner-killer-bot.herokuapp.com/audio/killz.mp3";
