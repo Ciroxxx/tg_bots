@@ -1,6 +1,10 @@
 <?php
 
 require_once 'log_debug.php';
+require_once 'functions.php';
+
+
+
 
 $content = file_get_contents("php://input");
 
@@ -43,7 +47,15 @@ elseif($text=="/mine")
 }
 elseif($text=="/gnocca")
 {
-    $url = "http://static2.oggi.it/wp-content/uploads/sites/6/2015/03/INTIMISSIMI518.jpg?v=1425547126";
+    $gnocca = google_images_search("gnocca");
+    log_debug($gnocca);
+    
+    if($gnocca){
+        $url = pick_random($gnocca);
+    } else {
+        $url = $url = "https://miner-killer-bot.herokuapp.com/images/no_gnocca.jpg";
+    }
+
 }
 elseif($text == "/killz")
 {
