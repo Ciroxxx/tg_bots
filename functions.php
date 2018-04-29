@@ -8,7 +8,8 @@ function google_images_search($string){//gets term to search, returns urls to im
         "num" => 10,
         "key" => "AIzaSyA4H9Je_epjF9G-s5ibU7d0-qO7T4i4ucU",
         "cx" => "007307369367147993290:mvp2ald3mrm",
-        "search_type" => "image"
+        "search_type" => "image",
+        "lr" => "lang_it"
     );
 
     foreach($google_search_params as $key => $val){
@@ -35,7 +36,7 @@ function google_images_search($string){//gets term to search, returns urls to im
     $results = curl_exec($ch);
 
     $results = json_decode($results);
-
+    log_debug($results, 'logging image search results');
     curl_close($ch);
     
     $images_url = array();
