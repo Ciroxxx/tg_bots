@@ -47,16 +47,9 @@ elseif($text=="/gnocca")
 }
 elseif($text == "/killz")
 {
-    $url = "https://miner-killer-bot.herokuapp.com/audio/beep.opus";
-}
-else
-{
-	$response = "Comando non valido!";
+    $url = "https://miner-killer-bot.herokuapp.com/audio/killz.mp3";
 }
 
-log_debug($text, 'logging $text');
-log_debug($_SERVER['HTTP_HOST'], 'HTTP_HOST');
-log_debug($_SERVER['SERVER_NAME'], 'SERVER_NAME');
 
 if($text === "/gnocca"){
     $parameters = array('chat_id' => $chatId, "photo" => $url);
