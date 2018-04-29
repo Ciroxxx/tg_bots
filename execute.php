@@ -45,7 +45,7 @@ elseif($text=="/mine")
 }
 elseif($text=="/gnocca")
 {
-    $gnocca = google_images_search("gnocca");
+    $gnocca = google_images_search("sexy");
     log_debug($gnocca, 'logging gnocca');
     
     if($gnocca){
