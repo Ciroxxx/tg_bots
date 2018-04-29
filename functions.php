@@ -1,7 +1,7 @@
 <?php
 
 function google_images_search($string){//gets term to search, returns urls to images
-    $query_url = "https://www.googleapis.it/customsearch/v1?";
+    $query_url = "https://www.googleapis.com/customsearch/v1?";
 
     $google_search_params = array(
         "q" => urlencode($string),
