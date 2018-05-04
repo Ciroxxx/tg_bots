@@ -41,7 +41,7 @@ elseif($text=="/kill")
 }
 elseif($text=="/mine")
 {
-	$response = "Grazie! Con le tue risorse ho creato una monetina!!!";
+	$response = "Grazie! Con le tue risorse ho creato una monetina, TIN!!!";
 }
 elseif($text=="/gnocca")
 {
