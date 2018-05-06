@@ -22,6 +22,11 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
     $result = curl_exec($handle);
     print_r($result);
     
+        print_r($BOT_NAME);
+            print_r($TOKEN);
+                        print_r($WEBHOOK_URL);
+        print_url($API_URL);
+        print_url($url);
 } else {
     exit;
 }
