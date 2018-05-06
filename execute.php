@@ -1,10 +1,15 @@
 <?php
 
+require_once("required_common/bots.php");
+
 require_once 'log_debug.php';
 require_once 'functions.php';
 
-
 $content = file_get_contents("php://input");
+
+log_debug($content, 'logging content');
+
+log_debug($_REQUEST, 'logging request');
 
 $update = json_decode($content, true);
 
