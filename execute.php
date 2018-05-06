@@ -20,7 +20,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
     $BOT_NAME = $_GET["bot_name"];
     $TOKEN = $bots[$BOT_NAME]["token"];
     
-    if($_GET["do"]) && in_array($_GET["do"], $bots[$BOT_NAME]["commands"])){//se è un'azione autonoma del bot
+    if($_GET["do"] && in_array($_GET["do"], $bots[$BOT_NAME]["commands"])){//se è un'azione autonoma del bot
         
     } else {//non è un'azione autonoma del bot e quindi deve rispondere ad un messaggio
         if(!$update)
