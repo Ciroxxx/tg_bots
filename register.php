@@ -5,7 +5,7 @@ require_once("required_common/bots.php");
 if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
     
     $BOT_NAME = $_GET["bot_name"];
-    $TOKEN = $bots[$bot_name];
+    $TOKEN = $bots[$BOT_NAME];
     // PARAMETRI DA MODIFICARE
     $WEBHOOK_URL = 'https://' . $BOT_NAME . '-killer-bot.herokuapp.com/execute.php';
 
@@ -21,12 +21,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
     curl_setopt($handle, CURLOPT_TIMEOUT, 60);
     $result = curl_exec($handle);
     print_r($result);
-    
-        print_r($BOT_NAME);
-            print_r($TOKEN);
-                        print_r($WEBHOOK_URL);
-        print_url($API_URL);
-        print_url($url);
+
 } else {
     exit;
 }
