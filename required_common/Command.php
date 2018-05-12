@@ -14,15 +14,15 @@ class Command{
 		if($check_is_command){//è un comando se inizia con /
 			if(strpos($text, '/') === 0){// è un comando
 
-				$text = substr($text, 0, strpos($text, '@'));//se il comando contiene la @ elimina la @botname
+				if($at_pos = strpos($text, '@')) $text = substr($text, 0, $at_pos);//se il comando contiene la @ elimina la @botname
 
-				log_debug($text, "$text");
+				log_debug($text, '$text');
 
 				$this -> command = strpos($text, ' ') ? substr($text, 1 , strpos($text, ' ')) : substr($text, 1);
 				$this -> is_command = true;
 				$this -> chat_id = $chat_id;
 
-				log_debug($this->command, "$this->command");
+				log_debug($this->command, '$this->command');
 
 				if(in_array($this -> command, $bots[$bot_name]["commands"])){
 					$this -> bot_name = $bot_name;
