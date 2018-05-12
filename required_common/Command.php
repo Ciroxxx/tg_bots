@@ -28,7 +28,7 @@ class Command{
 				if(in_array($this -> command, $bots[$bot_name]["commands"])){
 					$this -> bot_name = $bot_name;
 
-          //crea file con nome chatId, inserisci dentro tempo e nome comando
+          //crea file con nome chat_id, inserisci dentro tempo e nome comando
 					$fh = fopen("chats/" . $chat_id . '.txt', 'w') or die("can't open file");
 					$file_content = time() . PHP_EOL . $this->command . PHP_EOL . $this -> bot_name;
 					fwrite($fh,$file_content);
@@ -52,14 +52,14 @@ class Command{
 				}
 			} else {
 				$this -> is_command = false;
-
-				//*** controlla se esiste un file con il nome di chatId, se all'interno il parametro tempo meno l'attuale è minore di 30 e che comando c'è scritto
+				log_debug('chats/' . $chat_id . '.txt', 'path to file');
+				//*** controlla se esiste un file con il nome di chat_id, se all'interno il parametro tempo meno l'attuale è minore di 30 e che comando c'è scritto
 				//cambia la proprietà is_reply in true e poi chiama la funzione del relativo comando
-				if(is_file('chats/' . $chatId . '.txt')){
-					$file_content = file('chats/' . $chatId . '.txt');
+				if(is_file('chats/' . $chat_id . '.txt')){
+					$file_content = file('chats/' . $chat_id . '.txt');
 					log_debug($file_content, 'file_content prima');
 					log_debug((time() - $file_content[0]), 'differenza tra timestamp');
-					if((time() - $file_content[0]) <= 40){//$file_content[0] è lo UNIX timestamp in cui è statp eseguito l'ultimo comando da $chatId
+					if((time() - $file_content[0]) <= 40){//$file_content[0] è lo UNIX timestamp in cui è statp eseguito l'ultimo comando da $chat_id
 						log_debug($file_content, 'file_content dopo');
 						if(in_array($file_content[1], $bots[$file_content[2]]["commands"])){//$file_content[1] è il comando precedente, //$file_content[2] è il nome del bot precedente
               $this->is_reply = true;
