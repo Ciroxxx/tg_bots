@@ -62,7 +62,7 @@ class Command{
 					if((time() - $file_content[0]) <= 40){//$file_content[0] è lo UNIX timestamp in cui è statp eseguito l'ultimo comando da $chat_id
 						log_debug($file_content, 'file_content dopo');
 						if(in_array($file_content[1], $bots[$file_content[2]]["commands"])){//$file_content[1] è il comando precedente, //$file_content[2] è il nome del bot precedente
-              $this->is_reply = true;
+              $this->is_reply = 1;
 							$this -> response = call_user_func_array(array($this, $file_content[1]), array()); //call_user_func_array chiama dinamicamente un metodo (callback), interessante comportamento se si passa un array come primo argomento, il secondo argomento deve essere un array per sintassi
 						}
 					}
