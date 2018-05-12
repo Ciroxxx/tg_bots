@@ -55,7 +55,7 @@ class Command{
 
 	function send_text($text, $reply_markup){
 		$response = array("chat_id" => $this -> chat_id, "text" => $text, "method" => "sendMessage");
-		if($reply_markup) $response[] = $reply_markup;
+		if($reply_markup) $response["reply_markup"] = $reply_markup;
 		return $response;
 	}
 
