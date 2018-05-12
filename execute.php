@@ -36,7 +36,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
   			exit;
   		}
 
-    } else if($update['message']['entities'][0]['type'] === 'bot_command'){//se è un comando cioè se inizia con /
+    } else {
         if(!$update)
         {
           exit;
@@ -58,9 +58,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 
 		    log_debug($command, 'command');
 
-    } else {//prova a capire se è un argomento al comando
-
-	  }
+    }
 
 
     header("Content-Type: application/json");
