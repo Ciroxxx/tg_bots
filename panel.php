@@ -10,11 +10,20 @@ $chatId = "92219874";  //Receiver Chat Id
 // $resp = array("keyboard" => $keyboard,"resize_keyboard" => true,"one_time_keyboard" => true);
 // $reply = json_encode($resp);
 
+//code for inline keyboard markup
+// $keyboard = array('inline_keyboard' => array(array(array('text' => 'forward me to groups', 'callback_data' => 'someString'),array('text' => 'forward me to groups2', 'callback_data' => 'someStringgg'))));
+// $encodedKeyboard = json_encode($keyboard);
+
+//code for keyboard markup
+$encodedKeyboard = json_encode(array("keyboard" => array(array("bastardo1", "bastardo2")),"resize_keyboard" => true,"one_time_keyboard" => true));
+//'reply_markup' => '{"remove_keyboard":true}'
+
 $params=[
     'chat_id'=>$chatId,
-    'text'=>'rimuovi custom keyb',
-    'reply_markup' => json_encode(array("keyboard" => array(array("done", "done2")),"resize_keyboard" => true,"one_time_keyboard" => true))
-    //'reply_markup' => '{"remove_keyboard":true}'
+    'text'=>'qualche opzione',
+
+    //'reply_markup' => json_encode(array('inline_keyboard' => array(array('text' => 'forward me to groups', 'callback_data' => 'someString'))))
+    'reply_markup' => $encodedKeyboard
 ];
 $ch = curl_init($website . '/sendMessage');
 curl_setopt($ch, CURLOPT_HEADER, false);

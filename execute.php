@@ -8,7 +8,7 @@ require_once 'log_debug.php';
 require_once 'functions.php';
 
 if($_SERVER['REMOTE_ADDR'] === "127.0.0.1"){//se è in locale fornisco io dei valori dummy
-    $content = '{"message" : {"message_id" : "666", "chat" : {"id" : "999"}, "date" : "1234654", "text" : "/gnocca"}}';
+    $content = '{"message" : {"message_id" : "666", "chat" : {"id" : "999"}, "date" : "1234654", "text" : "/mine","entities" : [{"type" : "bot_command"}]}}';
 } else {
     $content = file_get_contents("php://input");
 }
@@ -49,17 +49,13 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
         $text = isset($message['text']) ? $message['text'] : "";
         $text = trim($text);
         $text = strtolower($text);
-        
+
 		    $command = new Command($BOT_NAME, $chatId, $text, true, $message);
 
 		    if($command -> is_command){
 			      $response = $command -> response;
-		    } else {
-			// implementare funzione per leggere da file le info sul messaggio precedente
-
-			// è dialogo con bot se dal precedente messaggio sono passati meno di 30 secondi e se la persona che scrive il messaggio è la stessa del precedente
-
 		    }
+
 		    log_debug($command, 'command');
 
     } else {//prova a capire se è un argomento al comando
