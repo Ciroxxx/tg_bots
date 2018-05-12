@@ -77,8 +77,8 @@ class Command{
 		//$buttons = array(array("text" => "testo1", "callback_data" => "dati callback"));
 		$inline_keyboard = array('inline_keyboard' => array(array('text' => 'Tasto1', 'callback_data' => 'pressed_btn1')));
 		//$reply_markup = json_encode(array("inline_keyboard" => $buttons));
-		//$reply_markup = json_encode($inline_keyboard);
-		$reply_markup = json_encode(array('remove_keyboard' => true));
+		$reply_markup = json_encode($inline_keyboard);
+
 		return $this -> send_text("bang! Sei morto stronzo/a", $reply_markup);
 	}
 
