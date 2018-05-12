@@ -61,6 +61,7 @@ class Command{
 
 						if(in_array($file_content[1], $bots[$file_content[2]]["commands"])){//$file_content[1] è il comando precedente, //$file_content[2] è il nome del bot precedente
               $this->is_reply = true;
+							log_debug($this->is_reply, 'this is reply');
 							$this -> response = call_user_func_array(array($this, $file_content[1]), array($text)); //call_user_func_array chiama dinamicamente un metodo (callback), interessante comportamento se si passa un array come primo argomento, il secondo argomento deve essere un array per sintassi
 						}
 					}
@@ -132,6 +133,7 @@ class Command{
 	}
 
 	function command1($text){
+		log_debug($this->is_reply, 'this is reply in command 1');
 		if($this->is_reply === true){
 			switch($text){
 				case ":-)":
