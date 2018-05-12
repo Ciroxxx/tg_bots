@@ -57,6 +57,7 @@ class Command{
 				//cambia la proprietà is_reply in true e poi chiama la funzione del relativo comando
 				if(is_file('chats/' . $chatId . '.txt')){
 					$file_content = file('chats/' . $chatId . '.txt');
+					log_debug((time() - $file_content[0]), 'differenza tra timestamp');
 					if((time() - $file_content[0]) <= 40){//$file_content[0] è lo UNIX timestamp in cui è statp eseguito l'ultimo comando da $chatId
 						log_debug($file_content, 'file_content');
 						if(in_array($file_content[1], $bots[$file_content[2]]["commands"])){//$file_content[1] è il comando precedente, //$file_content[2] è il nome del bot precedente
