@@ -61,6 +61,8 @@ class Command{
 
 					if((time() - $file_content[0]) <= 40){//$file_content[0] è lo UNIX timestamp in cui è statp eseguito l'ultimo comando da $chat_id
 						log_debug(1, 'sono nel controllo sul tempo');
+						log_debug($file_content[1], 'comando contenuto nel file');
+						log_debug($bots[$file_content[2]]["commands"], 'nell array bots');
 						if(in_array($file_content[1], $bots[$file_content[2]]["commands"])){//$file_content[1] è il comando precedente, //$file_content[2] è il nome del bot precedente
 							log_debug(1, 'sono nel controllo sulla corrispondenza bot/nome comando');
               $this->is_reply = true;
