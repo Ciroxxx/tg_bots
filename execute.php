@@ -49,7 +49,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
         $text = isset($message['text']) ? $message['text'] : "";
         $text = trim($text);
         $text = strtolower($text);
-
+        
 		    $command = new Command($BOT_NAME, $chatId, $text, true, $message);
 
 		    if($command -> is_command){
