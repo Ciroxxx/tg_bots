@@ -52,14 +52,17 @@ class Command{
 				}
 			} else {
 				$this -> is_command = false;
+				log_debug(1, 'sono qui');
 				//*** controlla se esiste un file con il nome di chat_id, se all'interno il parametro tempo meno l'attuale è minore di 30 e che comando c'è scritto
 				//cambia la proprietà is_reply in true e poi chiama la funzione del relativo comando
 				if(is_file('chats/' . $chat_id . '.txt')){
+					log_debug(1, 'sono nell if il file esiste');
 					$file_content = file('chats/' . $chat_id . '.txt');
 
 					if((time() - $file_content[0]) <= 40){//$file_content[0] è lo UNIX timestamp in cui è statp eseguito l'ultimo comando da $chat_id
-
+						log_debug(1, 'sono nel controllo sul tempo');
 						if(in_array($file_content[1], $bots[$file_content[2]]["commands"])){//$file_content[1] è il comando precedente, //$file_content[2] è il nome del bot precedente
+							log_debug(1, 'sono nel controllo sulla corrispondenza bot/nome comando');
               $this->is_reply = true;
 							log_debug($this->is_reply, 'this is reply');
 							$this -> response = call_user_func_array(array($this, $file_content[1]), array($text)); //call_user_func_array chiama dinamicamente un metodo (callback), interessante comportamento se si passa un array come primo argomento, il secondo argomento deve essere un array per sintassi
