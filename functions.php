@@ -69,3 +69,8 @@ function pick_random($arr){
         return false;
     }
 }
+
+function check_right_command($COMMAND, $BOT_NAME){
+
+	return $COMMAND ? $COMMAND : false;
+}

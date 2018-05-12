@@ -5,6 +5,7 @@ $bots = array(
         array(
             "token" => "572812206:AAERyKASDR4TIqwJiPnt17bNSE0kCwkazB8",
             "commands" => array(
+				"start",
                 "kill",
                 "mine",
                 "killz",

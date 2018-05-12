@@ -1,0 +1,124 @@
+
+********** 06-05 04:27:33 **********
+logging $update
+
+********** 10-05 11:26:38 **********
+logging $update
+Array
+(
+    [update_id] => 983840778
+    [message] => Array
+        (
+            [message_id] => 379
+            [from] => Array
+                (
+                    [id] => 92219874
+                    [is_bot] => 
+                    [first_name] => Francesco
+                    [last_name] => Ferigo
+                    [username] => Ferex
+                    [language_code] => en-IT
+                )
+
+            [chat] => Array
+                (
+                    [id] => 92219874
+                    [first_name] => Francesco
+                    [last_name] => Ferigo
+                    [username] => Ferex
+                    [type] => private
+                )
+
+            [date] => 1525951598
+            [text] => /gnocca
+            [entities] => Array
+                (
+                    [0] => Array
+                        (
+                            [offset] => 0
+                            [length] => 7
+                            [type] => bot_command
+                        )
+
+                )
+
+        )
+
+)
+
+********** 10-05 11:27:01 **********
+logging $update
+Array
+(
+    [update_id] => 983840779
+    [message] => Array
+        (
+            [message_id] => 381
+            [from] => Array
+                (
+                    [id] => 92219874
+                    [is_bot] => 
+                    [first_name] => Francesco
+                    [last_name] => Ferigo
+                    [username] => Ferex
+                    [language_code] => en-IT
+                )
+
+            [chat] => Array
+                (
+                    [id] => 92219874
+                    [first_name] => Francesco
+                    [last_name] => Ferigo
+                    [username] => Ferex
+                    [type] => private
+                )
+
+            [date] => 1525951621
+            [text] => No
+        )
+
+)
+
+********** 10-05 11:27:45 **********
+logging $update
+Array
+(
+    [update_id] => 983840780
+    [message] => Array
+        (
+            [message_id] => 382
+            [from] => Array
+                (
+                    [id] => 92219874
+                    [is_bot] => 
+                    [first_name] => Francesco
+                    [last_name] => Ferigo
+                    [username] => Ferex
+                    [language_code] => en-IT
+                )
+
+            [chat] => Array
+                (
+                    [id] => 92219874
+                    [first_name] => Francesco
+                    [last_name] => Ferigo
+                    [username] => Ferex
+                    [type] => private
+                )
+
+            [date] => 1525951663
+            [text] => /spero
+            [entities] => Array
+                (
+                    [0] => Array
+                        (
+                            [offset] => 0
+                            [length] => 6
+                            [type] => bot_command
+                        )
+
+                )
+
+        )
+
+)
