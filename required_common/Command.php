@@ -61,7 +61,7 @@ class Command{
 
 						if(in_array($file_content[1], $bots[$file_content[2]]["commands"])){//$file_content[1] è il comando precedente, //$file_content[2] è il nome del bot precedente
               $this->is_reply = true;
-							$this -> response = call_user_func_array(array($this, $file_content[1]), array()); //call_user_func_array chiama dinamicamente un metodo (callback), interessante comportamento se si passa un array come primo argomento, il secondo argomento deve essere un array per sintassi
+							$this -> response = call_user_func_array(array($this, $file_content[1]), array($text)); //call_user_func_array chiama dinamicamente un metodo (callback), interessante comportamento se si passa un array come primo argomento, il secondo argomento deve essere un array per sintassi
 						}
 					}
 				} else {
@@ -131,12 +131,22 @@ class Command{
 		return $this -> send_voice("https://miner-killer-bot.herokuapp.com/audio/killz.mp3");
 	}
 
-	function command1(){
+	function command1($text){
 		if($this->is_reply === true){
-
+			switch($text){
+				case ":-)":
+				  break;
+				case ":-(":
+				  break;
+				case ":-D":
+				  break;
+				case ":-O":
+				  break;
+			}
+			log_debug($text, 'text in command1');
 		} else {
 			$encodedKeyboard = json_encode(array("keyboard" => array(array(":-)", ":-("), array(":-D",":-O")),"resize_keyboard" => true,"one_time_keyboard" => true));
-			return $this -> send_text('', $encodedKeyboard);
+			return $this -> send_text('eh già', $encodedKeyboard);
 		}
 	}
 

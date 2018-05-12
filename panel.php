@@ -15,15 +15,15 @@ $chatId = "92219874";  //Receiver Chat Id
 // $encodedKeyboard = json_encode($keyboard);
 
 //code for keyboard markup
-$encodedKeyboard = json_encode(array("keyboard" => array(array("bastardo1", "bastardo2")),"resize_keyboard" => true,"one_time_keyboard" => true));
+$encodedKeyboard = json_encode(array("keyboard" => array(array(":-)", ":-("), array(":-D",":-O")),"resize_keyboard" => true,"one_time_keyboard" => true));
 //'reply_markup' => '{"remove_keyboard":true}'
 
 $params=[
     'chat_id'=>$chatId,
-    'text'=>'qualche opzione',
+    'text'=>'rimuovi',
 
-    //'reply_markup' => json_encode(array('inline_keyboard' => array(array('text' => 'forward me to groups', 'callback_data' => 'someString'))))
-    'reply_markup' => $encodedKeyboard
+    'reply_markup' => '{"remove_keyboard":true}'
+    //'reply_markup' => $encodedKeyboard
 ];
 $ch = curl_init($website . '/sendMessage');
 curl_setopt($ch, CURLOPT_HEADER, false);
