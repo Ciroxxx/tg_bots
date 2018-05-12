@@ -64,6 +64,7 @@ class Command{
 						}
 					}
 				}
+				log_debug($this->is_reply, 'is_reply');
 			}
 		}
 	}
