@@ -74,7 +74,7 @@ class Command{
 	function kill(){
 		//$buttons = array(array("adesso", "più tardi"), array("domani", "dopodomani"));
 		// $reply_markup = json_encode(array("keyboard" => $buttons, "resize_keyboard" => true,"one_time_keyboard" => true));
-		$buttons = array(array("text" => "testo1", "callback_data" => "dati callback"),"text" => "testo2", "callback_data" => "dati callback2");
+		$buttons = array(array("text" => "testo1", "callback_data" => "dati callback"),array("text" => "testo2", "callback_data" => "dati callback2"));
 		$reply_markup = json_encode(array("inline_keyboard" => $buttons));
 		return $this -> send_text("bang! Sei morto stronzo/a", $reply_markup);
 	}
