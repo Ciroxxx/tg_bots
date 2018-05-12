@@ -66,6 +66,8 @@ class Command{
 							$this -> response = call_user_func_array(array($this, $file_content[1]), array()); //call_user_func_array chiama dinamicamente un metodo (callback), interessante comportamento se si passa un array come primo argomento, il secondo argomento deve essere un array per sintassi
 						}
 					}
+				} else {
+					log_debug(1, 'is not a file');
 				}
 
 				log_debug($this -> is_reply, 'is_reply');
