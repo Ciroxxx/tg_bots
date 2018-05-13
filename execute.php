@@ -52,7 +52,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 
 		    $command = new Command($BOT_NAME, $chatId, $text, true, $message);
 
-		    if($command -> is_command){
+		    if($command){
 			      $response = $command -> response;
 		    }
 
