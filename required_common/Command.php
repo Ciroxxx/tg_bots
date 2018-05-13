@@ -57,7 +57,7 @@ class Command{
 				//cambia la proprietà is_reply in true e poi chiama la funzione del relativo comando
 				if(is_file('chats/' . $chat_id . '.txt')){
 					log_debug(1, 'sono nell if il file esiste');
-					$file_content = file('chats/' . $chat_id . '.txt');
+					$file_content = file('chats/' . $chat_id . '.txt',FILE_IGNORE_NEW_LINES);
 
 					if((time() - $file_content[0]) <= 40){//$file_content[0] è lo UNIX timestamp in cui è statp eseguito l'ultimo comando da $chat_id
 						log_debug(1, 'sono nel controllo sul tempo');
