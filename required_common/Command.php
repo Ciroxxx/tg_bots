@@ -12,6 +12,8 @@ class Command{
 	function __construct($bot_name = "miner", $chat_id = 113,$text = "/start", $check_is_command = false, $message){
 		global $bots;
 
+		$this -> chat_id = $chat_id;
+
 		if($check_is_command){//è un comando se inizia con /
 			if(strpos($text, '/') === 0){// è un comando
 
@@ -21,7 +23,6 @@ class Command{
 
 				$this -> command = strpos($text, ' ') ? substr($text, 1 , strpos($text, ' ')) : substr($text, 1);
 				$this -> is_command = true;
-				$this -> chat_id = $chat_id;
 
 				log_debug($this->command, '$this->command');
 
