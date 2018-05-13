@@ -97,7 +97,7 @@ class Command{
 
 	function send_photo($url, $reply_markup){
 		$response = array("chat_id" => $this -> chat_id, "photo" => $url, "method" => "sendPhoto");
-		if($reply_markup) $response["reply_markup"] = $reply_markup;
+		//if($reply_markup) $response["reply_markup"] = $reply_markup;
 		return $response;
 	}
 
