@@ -110,7 +110,7 @@ class Command{
 		return $this -> send_text("Ciao $firstname, ti stimo");
 	}
 
-	function kill(){
+	function kill(){//non usato
 		//$buttons = array(array("adesso", "più tardi"), array("domani", "dopodomani"));
 		// $reply_markup = json_encode(array("keyboard" => $buttons, "resize_keyboard" => true,"one_time_keyboard" => true));
 		//$buttons = array(array("text" => "testo1", "callback_data" => "dati callback"));
@@ -153,28 +153,50 @@ class Command{
 		if($this->is_reply === true){
 			switch($text){
 				case ":-)":
+				  $url = "https://miner-killer-bot.herokuapp.com/images/pickard_smile.jpg";
 				  break;
 				case ":-(":
 					$url = "https://miner-killer-bot.herokuapp.com/images/pickard_sad.jpg";
 				  break;
-				case ":-D":
+				case ":-X":
+				  $url = "https://miner-killer-bot.herokuapp.com/images/pickard_hide.jpg";
 				  break;
 				case ":-O":
+				  $url = "https://miner-killer-bot.herokuapp.com/images/pickard_cmon.jpg";
+				  break;
+				case "fuck!":
+				  $url = "https://miner-killer-bot.herokuapp.com/images/pickard_fuck.jpg";
 				  break;
 			}
 			return $this -> send_photo($url,'{"remove_keyboard":true}');
 			log_debug($text, 'text in command1');
 		} else {
-			$encodedKeyboard = json_encode(array("keyboard" => array(array(":-)", ":-("), array(":-D",":-O")),"resize_keyboard" => true,"one_time_keyboard" => true));
+			$encodedKeyboard = json_encode(array("keyboard" => array(array(":-)", ":-("), array(":-D",":-O"), array("fuck!")),"resize_keyboard" => true,"one_time_keyboard" => true));
 			return $this -> send_text('eh già', $encodedKeyboard);
 		}
 	}
 
-	function appuntamento(){
+	function appuntamento($text){
 		if($this->is_reply === true){
-
+			if($text === "sì"){
+				$url = "https://miner-killer-bot.herokuapp.com/images/brent_contaci.jpg";
+			} else if($text === no){
+				$url = "https://miner-killer-bot.herokuapp.com/images/pickard_sad.jpg";
+			}
+			return $this -> send_photo($url,'{"remove_keyboard":true}');
 		} else {
+			$appuntamento = array(
+				"proposta" => array("ci incontriamo a mensa ", "ci vediamo a pranzo ", "perchè non facciamo un giro in moto ", "ci vogliamo vedere al cinema ", "facciamo due passi ", "potremmo fare a pranzo "),
+				"tempo" => array("domani ", "nel pomeriggio ", "stasera ", "tra una settimana ", "l'anno prossimo ", "ieri "),
+				"luogo" => array("a Triparni?", "ai Due Mari?", "al River Village?", "a Cosenza?", "a Lamezia?", "a Chicago?")
+			);
+			$proposta = "";
 
+			foreach($appuntamento as $item){
+				$proposta .= pick_random($item);
+			}
+			$encodedKeyboard = json_encode(array("keyboard" => array(array("sì", "no")),"resize_keyboard" => true,"one_time_keyboard" => true));
+			return $this -> send_text($proposta, $encodedKeyboard);
 		}
 	}
 }
