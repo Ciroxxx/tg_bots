@@ -95,7 +95,9 @@ class Command{
 	}
 
 	function send_photo($url, $reply_markup){
-		return array("chat_id" => $this -> chat_id, "photo" => $url, "method" => "sendPhoto");
+		$response = array("chat_id" => $this -> chat_id, "text" => $text, "method" => "sendPhoto");
+		if($reply_markup) $response["reply_markup"] = $reply_markup;
+		return $response;
 	}
 
 	function send_voice($url, $reply_markup){
@@ -146,17 +148,20 @@ class Command{
 
 	function command1($text){
 		log_debug($this->is_reply, 'this is reply in command 1');
+
 		if($this->is_reply === true){
 			switch($text){
 				case ":-)":
 				  break;
 				case ":-(":
+					$url = "https://miner-killer-bot.herokuapp.com/images/pickard_--(.webp";
 				  break;
 				case ":-D":
 				  break;
 				case ":-O":
 				  break;
 			}
+			return $this -> send_photo($url,'{"remove_keyboard":true}');
 			log_debug($text, 'text in command1');
 		} else {
 			$encodedKeyboard = json_encode(array("keyboard" => array(array(":-)", ":-("), array(":-D",":-O")),"resize_keyboard" => true,"one_time_keyboard" => true));
