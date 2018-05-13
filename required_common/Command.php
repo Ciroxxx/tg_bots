@@ -155,7 +155,7 @@ class Command{
 				case ":-)":
 				  break;
 				case ":-(":
-					$url = "https://miner-killer-bot.herokuapp.com/images/pickard_sad.webp";
+					$url = "https://miner-killer-bot.herokuapp.com/images/pickard_sad.jpg";
 				  break;
 				case ":-D":
 				  break;
