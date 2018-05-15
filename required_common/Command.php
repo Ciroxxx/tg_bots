@@ -159,7 +159,7 @@ class Command{
 				case ":-(":
 					$url = "https://miner-killer-bot.herokuapp.com/images/pickard_sad1.jpg";
 				  break;
-				case ":-d":
+				case ":-x":
 				  $url = "https://miner-killer-bot.herokuapp.com/images/pickard_hide.jpg";
 				  break;
 				case ":-o":
@@ -172,7 +172,7 @@ class Command{
 			return $this -> send_photo($url,'{"remove_keyboard":true}');
 			log_debug($text, 'text in command1');
 		} else {
-			$encodedKeyboard = json_encode(array("keyboard" => array(array(":-)", ":-("), array(":-D",":-O"), array("fuck!")),"resize_keyboard" => true,"one_time_keyboard" => true));
+			$encodedKeyboard = json_encode(array("keyboard" => array(array(":-)", ":-("), array(":-X",":-O"), array("fuck!")),"resize_keyboard" => true,"one_time_keyboard" => true));
 			return $this -> send_text('eh già', $encodedKeyboard);
 		}
 	}
