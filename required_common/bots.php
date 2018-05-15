@@ -5,8 +5,7 @@ $bots = array(
         array(
             "token" => "572812206:AAERyKASDR4TIqwJiPnt17bNSE0kCwkazB8",
             "commands" => array(
-				        "start",
-                "command1",
+				"start",
                 "mine",
                 "killz",
                 "gnocca"
@@ -16,7 +15,8 @@ $bots = array(
         array(
             "token" => "435363970:AAE96UAhhQCcpa3B6bnj36WGnBh63i2z0cM",
             "commands" => array(
-              "appuntamento"
+			    "start",
+                "appuntamento"
             )
         ),
     "captain" =>

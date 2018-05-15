@@ -151,17 +151,18 @@ class Command{
 		log_debug($this->is_reply, 'this is reply in command 1');
 
 		if($this->is_reply === true){
+			log_debug($text, 'TEXT in command1');
 			switch($text){
 				case ":-)":
 				  $url = "https://miner-killer-bot.herokuapp.com/images/pickard_smile.jpg";
 				  break;
 				case ":-(":
-					$url = "https://miner-killer-bot.herokuapp.com/images/pickard_sad.jpg";
+					$url = "https://miner-killer-bot.herokuapp.com/images/pickard_sad1.jpg";
 				  break;
-				case ":-X":
+				case ":-x":
 				  $url = "https://miner-killer-bot.herokuapp.com/images/pickard_hide.jpg";
 				  break;
-				case ":-O":
+				case ":-o":
 				  $url = "https://miner-killer-bot.herokuapp.com/images/pickard_cmon.jpg";
 				  break;
 				case "fuck!":
