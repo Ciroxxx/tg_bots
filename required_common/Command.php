@@ -159,7 +159,7 @@ class Command{
 				case ":-(":
 					$url = "https://miner-killer-bot.herokuapp.com/images/pickard_sad1.jpg";
 				  break;
-				case ":-x":
+				case ":-d":
 				  $url = "https://miner-killer-bot.herokuapp.com/images/pickard_hide.jpg";
 				  break;
 				case ":-o":
