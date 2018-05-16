@@ -2,13 +2,13 @@
 $botToken = "572812206:AAERyKASDR4TIqwJiPnt17bNSE0kCwkazB8";
 
 $website="https://api.telegram.org/bot".$botToken;
-$chatId = "92219874";  //Receiver Chat Id
 
 
+$chats = array("-247870527" => "Save the Ferick", "-308708713" => "Bot Exp", "FeRick" => "92219874");
 require_once("required_common/bots.php");
 require_once("required_common/Command.php");
 
-$chatId = "-308708713";
+
 
 //code for inline keyboard markup
 $keyboard = array('inline_keyboard' => array(array(array('text' => 'forward me to groups', 'callback_data' => 'someString'),array('text' => 'forward me to groups2', 'callback_data' => 'someStringgg'))));
@@ -67,7 +67,7 @@ echo '<pre>' . print_r("reload", 1) . '</pre>';
                 <label>Bot</label>
                 <select name="bot">
                   <option value="0"></option>
-				  
+
 <?php
                   foreach($bots as $key => $value){
 					  if($_GET['bot'] === $key){
@@ -76,7 +76,7 @@ echo '<pre>' . print_r("reload", 1) . '</pre>';
 						  echo '<option value="' . $key .'">' . ucfirst($key) . '</option>';
 					  }
 				  }
-?>				  
+?>
                 </select>
               </div>
             </div>
@@ -93,7 +93,7 @@ echo '<pre>' . print_r("reload", 1) . '</pre>';
 						  echo '<option value="' . $value .'">' . ucfirst($value) . '</option>';
 					  }
 				  }
-?>	
+?>
                 </select>
               </div>
             </div>
@@ -104,7 +104,7 @@ echo '<pre>' . print_r("reload", 1) . '</pre>';
                 <textarea name="text" placeholder="small-12.cell">
 <?php
                 if($_GET['text']) echo $_GET['text'];
-?>								
+?>
 				</textarea>
               </div>
             </div>
@@ -118,8 +118,8 @@ echo '<pre>' . print_r("reload", 1) . '</pre>';
               </div>
             </div>
 
-            <input type="hidden" name="true_submit" value="0">			
-			
+            <input type="hidden" name="true_submit" value="0">
+
 			<div class="grid-x grid-padding-x">
               <div class="large-12 cell">
                  <button type="submit" class="button expanded" onclick="submit_truly()">Manda</button>
@@ -129,18 +129,18 @@ echo '<pre>' . print_r("reload", 1) . '</pre>';
         </div>
       </div>
     </div>
-	
+
 	<script>
 		var selectElements = document.getElementsByTagName('select');
 		console.log(selectElements);
 		var count = selectElements.length;
-		
+
 		for(i = 0; i < count; i++){
 		    selectElements[i].addEventListener('change',function(){ document.getElementsByTagName('form')[0].submit();});
 		}
-		
+
 		function submit_truly(){
-			
+
 		}
 	</script>
   </body>

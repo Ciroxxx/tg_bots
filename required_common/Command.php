@@ -95,9 +95,10 @@ class Command{
 		return $response;
 	}
 
-	function send_photo($url, $reply_markup){
+	function send_photo($url, $reply_markup, $caption){
 		$response = array("chat_id" => $this -> chat_id, "photo" => $url, "method" => "sendPhoto");
 		if($reply_markup) $response["reply_markup"] = $reply_markup;
+		if($caption) $response['caption'] = $caption;
 		return $response;
 	}
 
@@ -180,11 +181,11 @@ class Command{
 	function appuntamento($text){
 		if($this->is_reply === true){
 			if($text === "sì"){
-				$url = "https://miner-killer-bot.herokuapp.com/images/brent_contaci.jpg";
+				$url = "https://miner-killer-bot.herokuapp.com/images/brent_contaci1.jpg";
 			} else if($text === no){
-				$url = "https://miner-killer-bot.herokuapp.com/images/pickard_sad.jpg";
+				$url = "https://miner-killer-bot.herokuapp.com/images/brent_smart_work.jpg";
 			}
-			return $this -> send_photo($url,'{"remove_keyboard":true}');
+			return $this -> send_photo($url,'{"remove_keyboard":true}', 'Allora ti aspetto domani in ufficio!');
 		} else {
 			$appuntamento = array(
 				"proposta" => array("ci incontriamo a mensa ", "ci vediamo a pranzo ", "perchè non facciamo un giro in moto ", "ci vogliamo vedere al cinema ", "facciamo due passi ", "potremmo fare a pranzo "),
