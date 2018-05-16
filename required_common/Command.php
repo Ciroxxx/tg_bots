@@ -182,10 +182,12 @@ class Command{
 		if($this->is_reply === true){
 			if($text === "sì"){
 				$url = "https://miner-killer-bot.herokuapp.com/images/brent_contaci1.jpg";
+				$caption = '';
 			} else if($text === no){
 				$url = "https://miner-killer-bot.herokuapp.com/images/brent_smart_work.jpg";
+				$caption = 'Allora ti aspetto domani in ufficio!';
 			}
-			return $this -> send_photo($url,'{"remove_keyboard":true}', 'Allora ti aspetto domani in ufficio!');
+			return $this -> send_photo($url,'{"remove_keyboard":true}', $caption);
 		} else {
 			$appuntamento = array(
 				"proposta" => array("ci incontriamo a mensa ", "ci vediamo a pranzo ", "perchè non facciamo un giro in moto ", "ci vogliamo vedere al cinema ", "facciamo due passi ", "potremmo fare a pranzo "),
