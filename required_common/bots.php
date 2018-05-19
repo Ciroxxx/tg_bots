@@ -5,26 +5,26 @@ $bots = array(
         array(
             "token" => "572812206:AAERyKASDR4TIqwJiPnt17bNSE0kCwkazB8",
             "commands" => array(
-				"start",
-                "mine",
-                "killz",
-                "gnocca"
+				        "start" => array(),
+                "mine" => array("panel"),
+                "killz" => array("panel"),
+                "gnocca" => array("panel")
             )
         ),
     "brent" =>
         array(
             "token" => "435363970:AAE96UAhhQCcpa3B6bnj36WGnBh63i2z0cM",
             "commands" => array(
-			    "start",
-                "appuntamento"
+			          "start" => array(),
+                "appuntamento" => array("panel")
             )
         ),
     "captain" =>
         array(
             "token" => "559592888:AAEuEsT85IhpM0TTDHgD_Jvyy1aF1M8Eobg",
             "commands" => array(
-                "start",
-                "command1"
+                "start" => array(),
+                "command1" => array()
             )
         )
 );

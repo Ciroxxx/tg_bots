@@ -9,12 +9,11 @@ class Command{
 	public $chat_id;
 	public $bot_name;
 
-	function __construct($bot_name = "miner", $chat_id = 113,$text = "/start", $check_is_command = false, $message){
+	function __construct($bot_name = "miner", $chat_id = 113,$text = "/start", $message){
 		global $bots;
 
 		$this -> chat_id = $chat_id;
 
-		if($check_is_command){//è un comando se inizia con /
 			if(strpos($text, '/') === 0){// è un comando
 
 				if($at_pos = strpos($text, '@')) $text = substr($text, 0, $at_pos);//se il comando contiene la @ elimina la @botname
@@ -26,7 +25,7 @@ class Command{
 
 				log_debug($this->command, '$this->command');
 
-				if(in_array($this -> command, $bots[$bot_name]["commands"])){
+				if(array_key_exists($this -> command, $bots[$bot_name]["commands"])){
 					$this -> bot_name = $bot_name;
 
           //crea file con nome chat_id, inserisci dentro tempo e nome comando
@@ -53,7 +52,7 @@ class Command{
 				}
 			} else {
 				$this -> is_command = false;
-				log_debug(1, 'sono qui');
+				
 				//*** controlla se esiste un file con il nome di chat_id, se all'interno il parametro tempo meno l'attuale è minore di 30 e che comando c'è scritto
 				//cambia la proprietà is_reply in true e poi chiama la funzione del relativo comando
 				if(is_file('chats/' . $chat_id . '.txt')){
@@ -64,14 +63,14 @@ class Command{
 						log_debug(1, 'sono nel controllo sul tempo');
 						log_debug($file_content[1], 'comando contenuto nel file');
 						log_debug($bots[$file_content[2]]["commands"], 'nell array bots');
-						if(in_array($file_content[1], $bots[$file_content[2]]["commands"])){
+						if(array_key_exists($file_content[1], $bots[$file_content[2]]["commands"])){
 							log_debug(1, 'if in_array dà sì');
 						} else {
 							log_debug(1, 'if in_array dà no');
 						}
 
 
-						if(in_array($file_content[1], $bots[$file_content[2]]["commands"])){//$file_content[1] è il comando precedente, //$file_content[2] è il nome del bot precedente
+						if(array_key_exists($file_content[1], $bots[$file_content[2]]["commands"])){//$file_content[1] è il comando precedente, //$file_content[2] è il nome del bot precedente
 							log_debug(1, 'sono nel controllo sulla corrispondenza bot/nome comando');
               $this->is_reply = true;
 							log_debug($this->is_reply, 'this is reply');
@@ -82,7 +81,6 @@ class Command{
 					log_debug(1, 'is not a file');
 				}
 			}
-		}
 	}
 
 	function wrong_command(){
