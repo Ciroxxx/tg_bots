@@ -181,7 +181,7 @@ class Command{
 			if($text === "sì"){
 				$url = "https://miner-killer-bot.herokuapp.com/images/brent_contaci1.jpg";
 				$caption = '';
-			} else if($text === no){
+			} else if($text === "no"){
 				$url = "https://miner-killer-bot.herokuapp.com/images/brent_smart_work.jpg";
 				$caption = 'Allora ti aspetto domani in ufficio!';
 			}
