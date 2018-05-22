@@ -9,7 +9,7 @@ class Command{
 	public $chat_id;
 	public $bot_name;
 
-	function __construct($bot_name = "miner", $chat_id = 113,$text = "/start", $check_is_command = false, $message){
+	function __construct($bot_name = "miner", $chat_id = 113,$text = "/start", $check_is_command = false, $message = ""){
 		global $bots;
 
 		$this -> chat_id = $chat_id;
@@ -89,20 +89,20 @@ class Command{
 		return array("chat_id" => $this -> chat_id, "text" => "hai sbagliato bot :-(", "method" => "sendMessage");
 	}
 
-	function send_text($text, $reply_markup){
+	function send_text($text, $reply_markup = ""){
 		$response = array("chat_id" => $this -> chat_id, "text" => $text, "method" => "sendMessage");
 		if($reply_markup) $response["reply_markup"] = $reply_markup;
 		return $response;
 	}
 
-	function send_photo($url, $reply_markup, $caption){
+	function send_photo($url, $reply_markup = "", $caption = ""){
 		$response = array("chat_id" => $this -> chat_id, "photo" => $url, "method" => "sendPhoto");
 		if($reply_markup) $response["reply_markup"] = $reply_markup;
 		if($caption) $response['caption'] = $caption;
 		return $response;
 	}
 
-	function send_voice($url, $reply_markup){
+	function send_voice($url, $reply_markup = ""){
 		return array("chat_id" => $this -> chat_id, "voice" => $url, "method" => "sendVoice");
 	}
 
@@ -148,7 +148,7 @@ class Command{
 		return $this -> send_voice("https://miner-killer-bot.herokuapp.com/audio/killz.mp3");
 	}
 
-	function command1($text){
+	function command1($text =""){
 		log_debug($this->is_reply, 'this is reply in command 1');
 
 		if($this->is_reply === true){
@@ -178,7 +178,7 @@ class Command{
 		}
 	}
 
-	function appuntamento($text){
+	function appuntamento($text = ""){
 		if($this->is_reply === true){
 			if($text === "sì"){
 				$url = "https://miner-killer-bot.herokuapp.com/images/brent_contaci1.jpg";
