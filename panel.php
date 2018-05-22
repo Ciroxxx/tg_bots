@@ -33,8 +33,13 @@ require_once("required_common/bots.php");
 
 
 if((isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)) && $_GET['truly_submit'] == 1){
+	echo '<pre>' . "I'll submit it truly" . '</pre>';
 	require_once 'execute.php';
+} else {
+	echo '<pre>' . "I won't submit it" . '</pre>';
 }
+
+echo '<pre>The GET ' . print_r($_GET, 1) . '</pre>';
 ?>
 
 <!doctype html>
@@ -89,7 +94,7 @@ if((isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)) && $
               </div>
             </div>
 
-            <div class="grid-x grid-padding-x" style="display:none">
+            <div class="grid-x grid-padding-x">
               <div class="large-12 cell">
                 <label>Textarea Label</label>
                 <textarea name="text" placeholder="small-12.cell"><?php

@@ -25,35 +25,15 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
       $TOKEN = $bots[$BOT_NAME]["token"];
 
       if($_GET["do"] && array_key_exists($_GET["do"], $bots[$BOT_NAME]["commands"])){//se è un'azione autonoma del bot
-        $do = '/' . $_GET["do"];
+        $COMMAND = $_GET["do"];
 
-        log_debug($do, 'logging do');
+        log_debug($COMMAND, 'logging command');
 
-    		if($do){
+    		if($COMMAND){
     			$chat_id = $_GET["chat_id"];
-          log_debug($chat_id, '$chat_id');
+
           if($chat_id){
-              $command = new Command($BOT_NAME, $chat_id, $do);
-              log_debug($command, 'logging command');
-              if($command){
-                  $response = $command -> response;
-              }
 
-
-              $website="https://api.telegram.org/bot" . $TOKEN;
-
-              $params = $response;
-              log_debug($params, 'params');
-              unset($params["method"]);
-
-              $ch = curl_init($website . '/' . $response["method"]);
-              curl_setopt($ch, CURLOPT_HEADER, false);
-              curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-              curl_setopt($ch, CURLOPT_POST, 1);
-              curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
-              curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-              $result = curl_exec($ch);
-              curl_close($ch);
           } else {
             exit('chat_id not set');
           }
@@ -83,7 +63,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
         $text = trim($text);
         $text = strtolower($text);
 
-		    $command = new Command($BOT_NAME, $chat_id, $text, $message);
+		    $command = new Command($BOT_NAME, $chat_id, $text, true, $message);
 
 		    if($command){
 			      $response = $command -> response;

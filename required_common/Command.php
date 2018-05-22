@@ -9,11 +9,12 @@ class Command{
 	public $chat_id;
 	public $bot_name;
 
-	function __construct($bot_name = "miner", $chat_id = 113,$text = "/start", $message){
+	function __construct($bot_name = "miner", $chat_id = 113,$text = "/start", $check_is_command = false, $message){
 		global $bots;
 
 		$this -> chat_id = $chat_id;
 
+		if($check_is_command){//è un comando se inizia con /
 			if(strpos($text, '/') === 0){// è un comando
 
 				if($at_pos = strpos($text, '@')) $text = substr($text, 0, $at_pos);//se il comando contiene la @ elimina la @botname
@@ -52,7 +53,7 @@ class Command{
 				}
 			} else {
 				$this -> is_command = false;
-				
+				log_debug(1, 'sono qui');
 				//*** controlla se esiste un file con il nome di chat_id, se all'interno il parametro tempo meno l'attuale è minore di 30 e che comando c'è scritto
 				//cambia la proprietà is_reply in true e poi chiama la funzione del relativo comando
 				if(is_file('chats/' . $chat_id . '.txt')){
@@ -81,6 +82,7 @@ class Command{
 					log_debug(1, 'is not a file');
 				}
 			}
+		}
 	}
 
 	function wrong_command(){
