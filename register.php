@@ -3,12 +3,14 @@
 require_once("required_common/bots.php");
 
 if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
-    
+
     $BOT_NAME = $_GET["bot_name"];
     $TOKEN = $bots[$BOT_NAME]["token"];
     // PARAMETRI DA MODIFICARE
     //$WEBHOOK_URL = 'https://' . $BOT_NAME . '-killer-bot.herokuapp.com/execute.php';
-    $WEBHOOK_URL = 'https://miner-killer-bot.herokuapp.com/execute.php?bot_name=' . $BOT_NAME;
+    //$WEBHOOK_URL = 'https://miner-killer-bot.herokuapp.com/execute.php?bot_name=' . $BOT_NAME;
+
+    $WEBHOOK_URL = 'https://miner-killer-bot.herokuapp.com/testaccio.php?bot_name=' . $BOT_NAME;
 
     // NON APPORTARE MODIFICHE NEL CODICE SEGUENTE
     $API_URL = 'https://api.telegram.org/bot' . $TOKEN .'/';
