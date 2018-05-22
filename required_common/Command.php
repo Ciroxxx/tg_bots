@@ -9,78 +9,76 @@ class Command{
 	public $chat_id;
 	public $bot_name;
 
-	function __construct($bot_name = "miner", $chat_id = 113,$text = "/start", $check_is_command = false, $message = ""){
+	function __construct($bot_name = "miner", $chat_id = 113,$text = "/start", $message = ""){
 		global $bots;
 
 		$this -> chat_id = $chat_id;
 
-		if($check_is_command){//è un comando se inizia con /
-			if(strpos($text, '/') === 0){// è un comando
 
-				if($at_pos = strpos($text, '@')) $text = substr($text, 0, $at_pos);//se il comando contiene la @ elimina la @botname
+		if(strpos($text, '/') === 0){// è un comando
 
-				log_debug($text, '$text');
+			if($at_pos = strpos($text, '@')) $text = substr($text, 0, $at_pos);//se il comando contiene la @ elimina la @botname
 
-				$this -> command = strpos($text, ' ') ? substr($text, 1 , strpos($text, ' ')) : substr($text, 1);
-				$this -> is_command = true;
+			log_debug($text, '$text');
 
-				log_debug($this->command, '$this->command');
+			$this -> command = strpos($text, ' ') ? substr($text, 1 , strpos($text, ' ')) : substr($text, 1);
+			$this -> is_command = true;
 
-				if(array_key_exists($this -> command, $bots[$bot_name]["commands"])){
-					$this -> bot_name = $bot_name;
+			log_debug($this->command, '$this->command');
 
-          //crea file con nome chat_id, inserisci dentro tempo e nome comando
-					$fh = fopen("chats/" . $chat_id . '.txt', 'w') or die("can't open file");
-					$file_content = time() . PHP_EOL . $this->command . PHP_EOL . $this -> bot_name;
-					fwrite($fh,$file_content);
-					fclose($fh);
+			if(array_key_exists($this -> command, $bots[$bot_name]["commands"])){
+				$this -> bot_name = $bot_name;
 
-					//costruisci qui i parametri
-					if($this -> command === "start" ){
-						$firstname = isset($message['from']['first_name']) ? $message['from']['first_name'] : "";
-						$lastname = isset($message['from']['last_name']) ? $message['from']['last_name'] : "";
-						$username = isset($message['from']['username']) ? $message['from']['username'] : "";
+        //crea file con nome chat_id, inserisci dentro tempo e nome comando
+				$fh = fopen("chats/" . $chat_id . '.txt', 'w') or die("can't open file");
+				$file_content = time() . PHP_EOL . $this->command . PHP_EOL . $this -> bot_name;
+				fwrite($fh,$file_content);
+				fclose($fh);
 
-						$params = array($firstname);
+				//costruisci qui i parametri
+				if($this -> command === "start" ){
+					$firstname = isset($message['from']['first_name']) ? $message['from']['first_name'] : "";
+					$lastname = isset($message['from']['last_name']) ? $message['from']['last_name'] : "";
+					$username = isset($message['from']['username']) ? $message['from']['username'] : "";
+
+					$params = array($firstname);
+				} else {
+					$params = array();
+				}
+
+				$this -> response = call_user_func_array(array($this, $this -> command), $params); //call_user_func_array chiama dinamicamente un metodo (callback), interessante comportamento se si passa un array come primo argomento, il secondo argomento deve essere un array per sintassi
+
+			} else {
+				$this -> response = $this -> wrong_command();
+			}
+		} else {
+			$this -> is_command = false;
+			//*** controlla se esiste un file con il nome di chat_id, se all'interno il parametro tempo meno l'attuale è minore di 30 e che comando c'è scritto
+			//cambia la proprietà is_reply in true e poi chiama la funzione del relativo comando
+			if(is_file('chats/' . $chat_id . '.txt')){
+				log_debug(1, 'sono nell if il file esiste');
+				$file_content = file('chats/' . $chat_id . '.txt',FILE_IGNORE_NEW_LINES);
+
+				if((time() - $file_content[0]) <= 40){//$file_content[0] è lo UNIX timestamp in cui è statp eseguito l'ultimo comando da $chat_id
+					log_debug(1, 'sono nel controllo sul tempo');
+					log_debug($file_content[1], 'comando contenuto nel file');
+					log_debug($bots[$file_content[2]]["commands"], 'nell array bots');
+					if(array_key_exists($file_content[1], $bots[$file_content[2]]["commands"])){
+						log_debug(1, 'if in_array dà sì');
 					} else {
-						$params = array();
+						log_debug(1, 'if in_array dà no');
 					}
 
-					$this -> response = call_user_func_array(array($this, $this -> command), $params); //call_user_func_array chiama dinamicamente un metodo (callback), interessante comportamento se si passa un array come primo argomento, il secondo argomento deve essere un array per sintassi
 
-				} else {
-					$this -> response = $this -> wrong_command();
+					if(array_key_exists($file_content[1], $bots[$file_content[2]]["commands"])){//$file_content[1] è il comando precedente, //$file_content[2] è il nome del bot precedente
+						log_debug(1, 'sono nel controllo sulla corrispondenza bot/nome comando');
+            $this->is_reply = true;
+						log_debug($this->is_reply, 'this is reply');
+						$this -> response = call_user_func_array(array($this, $file_content[1]), array($text)); //call_user_func_array chiama dinamicamente un metodo (callback), interessante comportamento se si passa un array come primo argomento, il secondo argomento deve essere un array per sintassi
+					}
 				}
 			} else {
-				$this -> is_command = false;
-				log_debug(1, 'sono qui');
-				//*** controlla se esiste un file con il nome di chat_id, se all'interno il parametro tempo meno l'attuale è minore di 30 e che comando c'è scritto
-				//cambia la proprietà is_reply in true e poi chiama la funzione del relativo comando
-				if(is_file('chats/' . $chat_id . '.txt')){
-					log_debug(1, 'sono nell if il file esiste');
-					$file_content = file('chats/' . $chat_id . '.txt',FILE_IGNORE_NEW_LINES);
-
-					if((time() - $file_content[0]) <= 40){//$file_content[0] è lo UNIX timestamp in cui è statp eseguito l'ultimo comando da $chat_id
-						log_debug(1, 'sono nel controllo sul tempo');
-						log_debug($file_content[1], 'comando contenuto nel file');
-						log_debug($bots[$file_content[2]]["commands"], 'nell array bots');
-						if(array_key_exists($file_content[1], $bots[$file_content[2]]["commands"])){
-							log_debug(1, 'if in_array dà sì');
-						} else {
-							log_debug(1, 'if in_array dà no');
-						}
-
-
-						if(array_key_exists($file_content[1], $bots[$file_content[2]]["commands"])){//$file_content[1] è il comando precedente, //$file_content[2] è il nome del bot precedente
-							log_debug(1, 'sono nel controllo sulla corrispondenza bot/nome comando');
-              $this->is_reply = true;
-							log_debug($this->is_reply, 'this is reply');
-							$this -> response = call_user_func_array(array($this, $file_content[1]), array($text)); //call_user_func_array chiama dinamicamente un metodo (callback), interessante comportamento se si passa un array come primo argomento, il secondo argomento deve essere un array per sintassi
-						}
-					}
-				} else {
-					log_debug(1, 'is not a file');
-				}
+				log_debug(1, 'is not a file');
 			}
 		}
 	}

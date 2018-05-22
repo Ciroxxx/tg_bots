@@ -94,7 +94,7 @@ echo '<pre>The GET ' . print_r($_GET, 1) . '</pre>';
               </div>
             </div>
 
-            <div class="grid-x grid-padding-x">
+            <div class="grid-x grid-padding-x" style="display:none">
               <div class="large-12 cell">
                 <label>Textarea Label</label>
                 <textarea name="text" placeholder="small-12.cell"><?php
