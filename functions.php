@@ -1,9 +1,9 @@
 <?php
 
 function google_images_search($string){//gets term to search, returns urls to images
-    
+
     $start = rand(1,100);
-    
+
     $query_url = "https://www.googleapis.com/customsearch/v1?";
 
     $google_search_params = array(
@@ -19,7 +19,7 @@ function google_images_search($string){//gets term to search, returns urls to im
     foreach($google_search_params as $key => $val){
         $query_url .= "&" . $key . "=" . $val;
     }
-    
+
     $ch = curl_init($query_url);
 
     $curl_options = array(
@@ -33,8 +33,8 @@ function google_images_search($string){//gets term to search, returns urls to im
         CURLOPT_CONNECTTIMEOUT => 120,    // time-out on connect
         CURLOPT_TIMEOUT        => 120,    // time-out on response
     );
-    
-    
+
+
     curl_setopt_array($ch, $curl_options);
 
     $results = curl_exec($ch);
@@ -42,20 +42,22 @@ function google_images_search($string){//gets term to search, returns urls to im
     $results = json_decode($results);
     //log_debug($results, 'logging image search results');
     curl_close($ch);
-    
+
     $images_url = array();
-    
+
     foreach($results->items as $item){
+      if($item->pagemap->cse_image[0]->src){
         $images_url[] = $item->pagemap->cse_image[0]->src;
+      }
     }
-    
-    if($images_url){ return $images_url; } else { return false; }
+
+    if($images_url){ return $images_url; } else { google_images_search($string); }
 }
 
 function pick_random($arr){
     if(is_array($arr)){
         $index = rand(0, count($arr));
-        
+
         $counter = 0;
         foreach($arr as $item){//use loop through elements because array can be associative
             if($counter === $index){
@@ -64,7 +66,7 @@ function pick_random($arr){
                 $counter++;
             }
         }
-        
+
     } else {
         return false;
     }

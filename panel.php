@@ -26,7 +26,7 @@
 // $result = curl_exec($ch);
 // curl_close($ch);
 
-$chats = array("-247870527" => "Save the Ferick", "-308708713" => "Bot Exp", "92219874" => "FeRick");
+$chats = array("-247870527" => "Save the Ferick", "-308708713" => "Bot Exp", "92219874" => "FeRick", "30629519" => "Luke");
 
 require_once("required_common/bots.php");
 //require_once("required_common/Command.php");
