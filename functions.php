@@ -68,7 +68,7 @@ function google_images_search($string){//gets term to search, returns urls to im
 
 function pick_random($arr){
     if(is_array($arr)){
-        $index = rand(0, count($arr));
+        $index = rand(0, count($arr) -1);
 
         $counter = 0;
         foreach($arr as $item){//use loop through elements because array can be associative
