@@ -17,7 +17,7 @@ require_once 'functions.php';
 
 
 log_debug($update, 'logging $update');
-log_debug($_GET, '$_GET');
+
 
 if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 
@@ -27,7 +27,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
       if($_GET["do"] && array_key_exists($_GET["do"], $bots[$BOT_NAME]["commands"])){//se è un'azione autonoma del bot
         $do = '/' . $_GET["do"];
 
-        log_debug($do, 'logging command');
+
 
     		if($do){
     			$chat_id = $_GET["chat_id"];
@@ -39,7 +39,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
                 $response = $command -> response;
             }
 
-            log_debug($command, 'command');
+
             $website="https://api.telegram.org/bot" . $TOKEN;
 
             $params = $response;
@@ -89,7 +89,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 			      $response = $command -> response;
 		    }
 
-		    log_debug($command, 'command');
+
         header("Content-Type: application/json");
 
         echo json_encode($response);

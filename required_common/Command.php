@@ -136,9 +136,9 @@ class Command{
 
 	function engage($text =""){
 		if($this->is_reply === true) exit;
-		$pict = google_images_search('pickard engage');
-		$pict[] = "https://miner-killer-bot.herokuapp.com/images/asso.jpg";
-		log_debug($_SERVER['HTTP_HOST'], 'logging http_host');
+		$pict = google_images_search(array('pickard engage'));
+		$pict[] = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'images/asso.jpg';
+		log_debug($pict, '$pict');
     if($pict){
         $url = pick_random($pict);
     } else {
