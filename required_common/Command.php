@@ -135,6 +135,7 @@ class Command{
 
         if($gnocca){
             $url = pick_random($gnocca);
+						log_debug($url, 'picture url');
         } else {
             $url = "https://miner-killer-bot.herokuapp.com/images/no_gnocca.jpg";
         }
