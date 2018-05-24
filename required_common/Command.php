@@ -128,7 +128,7 @@ class Command{
 	}
 
 	function gnocca(){
-		$words = array('sexy', 'gnocca', 'gambe sexy', 'sexy bikini', 'bocca sexy', 'belle tette');
+		$words = array('sexy', 'gnocca', 'gambe sexy', 'sexy bikini', 'bocca sexy', 'belle tette', 'figona', 'bella bionda', 'mora sexy', 'bionda sexy', 'rossa sexy');
 		if($this->is_reply === true) exit;
 		$gnocca = google_images_search(pick_random($words));
         log_debug($gnocca, 'logging gnocca');
@@ -147,7 +147,7 @@ class Command{
 		if($this->is_reply === true) exit;
 		return $this -> send_voice("https://miner-killer-bot.herokuapp.com/audio/killz.mp3");
 	}
-
+  
 	function command1($text =""){
 		log_debug($this->is_reply, 'this is reply in command 1');
 
