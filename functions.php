@@ -58,7 +58,7 @@ function google_images_search($string){//gets term to search, returns urls to im
     } else if($counter <= 5){
       log_debug(1, "!count images_url >= 1");
       $counter++;
-      google_images_search($string);
+      return google_images_search($string);
     } else {
       return false;
     }
