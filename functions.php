@@ -51,7 +51,13 @@ function google_images_search($string){//gets term to search, returns urls to im
       }
     }
     log_debug($images_url, 'logging images_url');
-    if(count($images_url) >= 1){ return $images_url; } else { google_images_search($string); }
+    if(count($images_url) >= 1){
+      log_debug(1, "count images_url >= 1");
+      return $images_url;
+    } else {
+      log_debug(1, "!count images_url >= 1");
+      google_images_search($string);
+    }
 }
 
 function pick_random($arr){
