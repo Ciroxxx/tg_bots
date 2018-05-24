@@ -3,6 +3,7 @@
 function google_images_search($string){//gets term to search, returns urls to images
 
     $start = rand(1,100);
+    static $counter = 0;
 
     $query_url = "https://www.googleapis.com/customsearch/v1?";
 
@@ -40,7 +41,7 @@ function google_images_search($string){//gets term to search, returns urls to im
     $results = curl_exec($ch);
 
     $results = json_decode($results);
-    //log_debug($results, 'logging image search results');
+    log_debug($results, 'logging image search results');
     curl_close($ch);
 
     $images_url = array();
@@ -54,9 +55,12 @@ function google_images_search($string){//gets term to search, returns urls to im
     if(count($images_url) >= 1){
       log_debug(1, "count images_url >= 1");
       return $images_url;
-    } else {
+    } else if($counter <= 5){
       log_debug(1, "!count images_url >= 1");
+      $counter++;
       google_images_search($string);
+    } else {
+      return false;
     }
 }
 
