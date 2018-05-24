@@ -51,7 +51,7 @@ function google_images_search($string){//gets term to search, returns urls to im
       }
     }
 
-    if($images_url){ return $images_url; } else { google_images_search($string); }
+    if(count($images_url) >= 1){ return $images_url; } else { google_images_search($string); }
 }
 
 function pick_random($arr){
