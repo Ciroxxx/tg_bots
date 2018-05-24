@@ -24,8 +24,6 @@ class Command{
 			$this -> command = strpos($text, ' ') ? substr($text, 1 , strpos($text, ' ')) : substr($text, 1);
 			$this -> is_command = true;
 
-			log_debug($this->command, '$this->command');
-
 			if(array_key_exists($this -> command, $bots[$bot_name]["commands"])){
 				$this -> bot_name = $bot_name;
 
@@ -56,24 +54,14 @@ class Command{
 			//*** controlla se esiste un file con il nome di chat_id, se all'interno il parametro tempo meno l'attuale è minore di 30 e che comando c'è scritto
 			//cambia la proprietà is_reply in true e poi chiama la funzione del relativo comando
 			if(is_file('chats/' . $chat_id . '.txt')){
-				log_debug(1, 'sono nell if il file esiste');
+
 				$file_content = file('chats/' . $chat_id . '.txt',FILE_IGNORE_NEW_LINES);
 
 				if((time() - $file_content[0]) <= 40){//$file_content[0] è lo UNIX timestamp in cui è statp eseguito l'ultimo comando da $chat_id
-					log_debug(1, 'sono nel controllo sul tempo');
-					log_debug($file_content[1], 'comando contenuto nel file');
-					log_debug($bots[$file_content[2]]["commands"], 'nell array bots');
-					if(array_key_exists($file_content[1], $bots[$file_content[2]]["commands"])){
-						log_debug(1, 'if in_array dà sì');
-					} else {
-						log_debug(1, 'if in_array dà no');
-					}
-
 
 					if(array_key_exists($file_content[1], $bots[$file_content[2]]["commands"])){//$file_content[1] è il comando precedente, //$file_content[2] è il nome del bot precedente
-						log_debug(1, 'sono nel controllo sulla corrispondenza bot/nome comando');
             $this->is_reply = true;
-						log_debug($this->is_reply, 'this is reply');
+
 						$this -> response = call_user_func_array(array($this, $file_content[1]), array($text)); //call_user_func_array chiama dinamicamente un metodo (callback), interessante comportamento se si passa un array come primo argomento, il secondo argomento deve essere un array per sintassi
 					}
 				}
@@ -131,11 +119,9 @@ class Command{
 		$words = array('sexy', 'gnocca', 'gambe sexy', 'sexy bikini', 'bocca sexy', 'belle tette', 'figona', 'bella bionda', 'mora sexy', 'bionda sexy', 'rossa sexy');
 		if($this->is_reply === true) exit;
 		$gnocca = google_images_search(pick_random($words));
-        log_debug($gnocca, 'logging gnocca');
-
         if($gnocca){
             $url = pick_random($gnocca);
-						log_debug($url, 'picture url');
+
         } else {
             $url = "https://miner-killer-bot.herokuapp.com/images/no_gnocca.jpg";
         }
@@ -147,12 +133,10 @@ class Command{
 		if($this->is_reply === true) exit;
 		return $this -> send_voice("https://miner-killer-bot.herokuapp.com/audio/killz.mp3");
 	}
-  
-	function command1($text =""){
-		log_debug($this->is_reply, 'this is reply in command 1');
 
+	function command1($text =""){
 		if($this->is_reply === true){
-			log_debug($text, 'TEXT in command1');
+
 			switch($text){
 				case ":-)":
 				  $url = "https://miner-killer-bot.herokuapp.com/images/pickard_smile.jpg";
@@ -171,7 +155,7 @@ class Command{
 				  break;
 			}
 			return $this -> send_photo($url,'{"remove_keyboard":true}');
-			log_debug($text, 'text in command1');
+
 		} else {
 			$encodedKeyboard = json_encode(array("keyboard" => array(array(":-)", ":-("), array(":-X",":-O"), array("fuck!")),"resize_keyboard" => true,"one_time_keyboard" => true));
 			return $this -> send_text('eh già', $encodedKeyboard);
