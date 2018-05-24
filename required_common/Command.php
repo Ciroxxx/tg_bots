@@ -128,8 +128,9 @@ class Command{
 	}
 
 	function gnocca(){
+		$words = array('sexy', 'gnocca', 'gambe sexy', 'sexy bikini', 'bocca sexy', 'belle tette');
 		if($this->is_reply === true) exit;
-		$gnocca = google_images_search("sexy");
+		$gnocca = google_images_search(pick_random($words));
         log_debug($gnocca, 'logging gnocca');
 
         if($gnocca){
