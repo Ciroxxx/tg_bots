@@ -20,7 +20,7 @@ function google_images_search($string){//gets term to search, returns urls to im
     foreach($google_search_params as $key => $val){
         $query_url .= "&" . $key . "=" . $val;
     }
-    log_debug($query_url, 'logging query url');
+
     $ch = curl_init($query_url);
 
     $curl_options = array(
@@ -41,7 +41,7 @@ function google_images_search($string){//gets term to search, returns urls to im
     $results = curl_exec($ch);
 
     $results = json_decode($results);
-log_debug($results, 'results');
+
     curl_close($ch);
 
     $images_url = array();
@@ -53,7 +53,7 @@ log_debug($results, 'results');
     }
     if(count($images_url) >= 1){
       return $images_url;
-    } else if($counter <= 5){
+    } else if($counter <= 3){
       $counter++;
       return google_images_search($string);
     } else {
@@ -85,11 +85,5 @@ function check_right_command($COMMAND, $BOT_NAME){
 }
 
 function get_protocol(){
-  if(empty($_SERVER['HTTPS'])){
-    log_debug(1, 'is empty');
-  } else {
-    log_debug(1, 'is not empty');
-  }
-
   return !empty($_SERVER['HTTPS']) ? 'https' : 'http';
 }

@@ -138,7 +138,6 @@ class Command{
 		if($this->is_reply === true) exit;
 		$pict = google_images_search('pickard engage');
 		$pict[] = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'images/asso.jpg';
-		log_debug($pict, '$pict');
     if($pict){
         $url = pick_random($pict);
     } else {
@@ -148,32 +147,15 @@ class Command{
 		return $this -> send_photo($url);
 	}
 
-	function command1($text =""){
-		if($this->is_reply === true){
+	function think($text =""){
+		if($this->is_reply === true) exit;
 
-			switch($text){
-				case ":-)":
-				  $url = "https://miner-killer-bot.herokuapp.com/images/pickard_smile.jpg";
-				  break;
-				case ":-(":
-					$url = "https://miner-killer-bot.herokuapp.com/images/pickard_sad1.jpg";
-				  break;
-				case ":-x":
-				  $url = "https://miner-killer-bot.herokuapp.com/images/pickard_hide.jpg";
-				  break;
-				case ":-o":
-				  $url = "https://miner-killer-bot.herokuapp.com/images/pickard_cmon.jpg";
-				  break;
-				case "fuck!":
-				  $url = "https://miner-killer-bot.herokuapp.com/images/pickard_fuck.jpg";
-				  break;
-			}
-			return $this -> send_photo($url,'{"remove_keyboard":true}');
+		$files = array('pickard_smile.jpg', 'pickard_sad1.jpg', 'pickard_hide.jpg', 'pickard_cmon.jpg', 'pickard_fuck.jpg', 'pickard_dontell.jpg', 'pickard_win.jpg', 'asso.jpg');
 
-		} else {
-			$encodedKeyboard = json_encode(array("keyboard" => array(array(":-)", ":-("), array(":-X",":-O"), array("fuck!")),"resize_keyboard" => true,"one_time_keyboard" => true));
-			return $this -> send_text('eh già', $encodedKeyboard);
-		}
+		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/images/' . pick_random($files);
+
+		return $this -> send_photo($url);
+
 	}
 
 	function appuntamento($text = ""){
@@ -189,8 +171,8 @@ class Command{
 		} else {
 			$appuntamento = array(
 				"proposta" => array("ci incontriamo a mensa ", "ci vediamo a pranzo ", "perchè non facciamo un giro in moto ", "ci vogliamo vedere al cinema ", "facciamo due passi ", "potremmo fare a pranzo "),
-				"tempo" => array("domani ", "nel pomeriggio ", "stasera ", "tra una settimana ", "l'anno prossimo ", "ieri "),
-				"luogo" => array("a Triparni?", "ai Due Mari?", "al River Village?", "a Cosenza?", "a Lamezia?", "a Chicago?")
+				"tempo" => array("domani ", "nel pomeriggio ", "stasera ", "tra una settimana ", "l'anno prossimo ", "ieri ", "l'altro giorno "),
+				"luogo" => array("a Triparni?", "ai Due Mari?", "al River Village?", "a Cosenza?", "a Lamezia?", "a Chicago?", "a Sannazzaro ")
 			);
 			$proposta = "";
 
