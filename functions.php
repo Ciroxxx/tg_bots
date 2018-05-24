@@ -51,15 +51,17 @@ function google_images_search($string){//gets term to search, returns urls to im
         $images_url[] = $item->pagemap->cse_image[0]->src;
       }
     }
-
+    log_debug($string, 'string used');
+    log_debug($images_url, 'logging images_url');
     if(count($images_url) >= 1){
-
+      log_debug(1, "count images_url >= 1");
       return $images_url;
     } else if($counter <= 5){
-      
+      log_debug(1, "!count images_url >= 1");
       $counter++;
       return google_images_search($string);
     } else {
+      log_debug(1, "returning false");
       return false;
     }
 }
