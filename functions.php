@@ -20,7 +20,7 @@ function google_images_search($string){//gets term to search, returns urls to im
     foreach($google_search_params as $key => $val){
         $query_url .= "&" . $key . "=" . $val;
     }
-
+    log_debug($query_url, 'logging query url');
     $ch = curl_init($query_url);
 
     $curl_options = array(
@@ -41,7 +41,7 @@ function google_images_search($string){//gets term to search, returns urls to im
     $results = curl_exec($ch);
 
     $results = json_decode($results);
-
+log_debug($results, 'results');
     curl_close($ch);
 
     $images_url = array();
