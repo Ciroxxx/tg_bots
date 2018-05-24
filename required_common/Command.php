@@ -158,6 +158,15 @@ class Command{
 
 	}
 
+	function smartwork($text =""){
+		if($this->is_reply === true) exit;
+
+		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/images/cerebro.jpg';
+
+		return $this -> send_photo($url);
+
+	}
+
 	function appuntamento($text = ""){
 		if($this->is_reply === true){
 			if($text === "sì"){
