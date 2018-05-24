@@ -50,7 +50,7 @@ function google_images_search($string){//gets term to search, returns urls to im
         $images_url[] = $item->pagemap->cse_image[0]->src;
       }
     }
-
+    log_debug($images_url, 'logging images_url');
     if(count($images_url) >= 1){ return $images_url; } else { google_images_search($string); }
 }
 
