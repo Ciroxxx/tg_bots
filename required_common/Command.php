@@ -136,7 +136,7 @@ class Command{
 
 	function engage($text =""){
 		if($this->is_reply === true) exit;
-		$pict = google_images_search(array('pickard engage'));
+		$pict = google_images_search('pickard engage');
 		$pict[] = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'images/asso.jpg';
 		log_debug($pict, '$pict');
     if($pict){

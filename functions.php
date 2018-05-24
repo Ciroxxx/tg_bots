@@ -85,5 +85,11 @@ function check_right_command($COMMAND, $BOT_NAME){
 }
 
 function get_protocol(){
+  if(empty($_SERVER['HTTPS'])){
+    log_debug(1, 'is empty');
+  } else {
+    log_debug(1, 'is not empty');
+  }
+
   return !empty($_SERVER['HTTPS']) ? 'https' : 'http';
 }
