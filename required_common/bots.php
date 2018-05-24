@@ -24,7 +24,8 @@ $bots = array(
             "token" => "559592888:AAEuEsT85IhpM0TTDHgD_Jvyy1aF1M8Eobg",
             "commands" => array(
                 "start" => array(),
-                "command1" => array()
+                "command1" => array(),
+                "engage" => array()
             )
         )
 );

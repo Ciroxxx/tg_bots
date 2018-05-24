@@ -134,6 +134,20 @@ class Command{
 		return $this -> send_voice("https://miner-killer-bot.herokuapp.com/audio/killz.mp3");
 	}
 
+	function engage($text =""){
+		if($this->is_reply === true) exit;
+		$pict = google_images_search('pickard engage');
+		$pict[] = "https://miner-killer-bot.herokuapp.com/images/asso.jpg";
+		log_debug($_SERVER['HTTP_HOST'], 'logging http_host');
+    if($pict){
+        $url = pick_random($pict);
+    } else {
+        $url = "https://miner-killer-bot.herokuapp.com/images/asso.jpg";
+    }
+
+		return $this -> send_photo($url);
+	}
+
 	function command1($text =""){
 		if($this->is_reply === true){
 
