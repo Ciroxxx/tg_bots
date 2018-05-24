@@ -1,9 +1,9 @@
 <?php
 
 $bots = array(
-    "miner" =>
+    "ferick" =>
         array(
-            "token" => "572812206:AAERyKASDR4TIqwJiPnt17bNSE0kCwkazB8",
+            "token" => "594696565:AAGJ8_I_LxUI2lS5iViYppfJToGWXXENjt8",
             "commands" => array(
 				        "start" => array(),
                 "mine" => array("panel"),
