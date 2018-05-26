@@ -162,8 +162,12 @@ class Command{
 		if($this->is_reply === true) exit;
 
 		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/images/cerebro.jpg';
-
-		return $this -> send_photo($url);
+		$caption = "Sono combattuto a riguardo...\n\r
+direi di no, ma anche si!\n\r
+Dovrei tuttavia attivare una connessione internet a casa, prendere la sedia da ufficio...\n\r
+Ma non ho uno spazio adibito a ufficio!\n\r
+...forse per un solo giorno non vale la pena!\n\r";
+		return $this -> send_photo($url, '', $caption);
 
 	}
 

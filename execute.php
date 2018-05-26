@@ -16,9 +16,6 @@ require_once 'log_debug.php';
 require_once 'functions.php';
 
 
-log_debug($update, 'logging $update');
-
-
 if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 
       $BOT_NAME = $_GET["bot_name"];
@@ -70,6 +67,9 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
         }
 
         $update = json_decode($content, true);
+
+        log_debug($update, 'logging $update');
+
         if(!$update)
         {
           exit('false update variable');
