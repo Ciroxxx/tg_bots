@@ -167,7 +167,7 @@ class Command{
 // Dovrei tuttavia attivare una connessione internet a casa, prendere la sedia da ufficio...\n\r
 // Ma non ho uno spazio adibito a ufficio!\n\r
 // ...forse per un solo giorno non vale la pena!\n\r";
-$caption = "Sono combattuto a riguardo...;
+$caption = "Sono combattuto a riguardo...";
 		return $this -> send_photo($url, '', $caption);
 
 	}
