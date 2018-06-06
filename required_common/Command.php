@@ -136,7 +136,7 @@ class Command{
 
 	function engage($text =""){
 		if($this->is_reply === true) exit;
-		$pict = google_images_search('picard engage');
+		$pict = google_images_search('captain picard engage', 'lang_en');
 		$pict[] = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'images/asso.jpg';
     if($pict){
         $url = pick_random($pict);

@@ -1,6 +1,6 @@
 <?php
 
-function google_images_search($string){//gets term to search, returns urls to images
+function google_images_search($string, $lang = "lang_it"){//gets term to search, returns urls to images
 
     $start = rand(1,100);
     static $counter = 0;
@@ -13,7 +13,7 @@ function google_images_search($string){//gets term to search, returns urls to im
         "key" => "AIzaSyA4H9Je_epjF9G-s5ibU7d0-qO7T4i4ucU",
         "cx" => "007307369367147993290:mvp2ald3mrm",
         "search_type" => "image",
-        "lr" => "lang_it",
+        "lr" => $lang,
         "start" => $start
     );
 
@@ -22,7 +22,7 @@ function google_images_search($string){//gets term to search, returns urls to im
     }
 
     $ch = curl_init($query_url);
-
+    //echo '<h3>' . $query_url . '</h3>';
     $curl_options = array(
         CURLOPT_RETURNTRANSFER => true,   // return web page
         CURLOPT_HEADER         => false,  // don't return headers
