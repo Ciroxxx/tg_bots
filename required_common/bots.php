@@ -28,6 +28,15 @@ $bots = array(
                 "engage" => array(),
                 "smartwork" => array()
             )
+        ),
+    "viking" =>
+        array(
+            "token" => "537957531:AAHxoqtIT5DvZFI3fNH_U1A1CRXz5pstOSY",
+            "commands" => array(
+                "start" => array(),
+                "araldica" => array(),
+                "kangaroo" => array()
+            )
         )
 );
 

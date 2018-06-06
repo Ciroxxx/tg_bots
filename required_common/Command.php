@@ -123,7 +123,7 @@ class Command{
             $url = pick_random($gnocca);
 
         } else {
-            $url = "https://miner-killer-bot.herokuapp.com/images/no_gnocca.jpg";
+            $url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'images/no_gnocca.jpg';
         }
 
 		return $this -> send_photo($url);
@@ -131,7 +131,7 @@ class Command{
 
 	function killz(){
 		if($this->is_reply === true) exit;
-		return $this -> send_voice("https://miner-killer-bot.herokuapp.com/audio/killz.mp3");
+		return $this -> send_voice(get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'audio/killz.mp3');
 	}
 
 	function engage($text =""){
@@ -143,7 +143,7 @@ class Command{
 		if($pict){
         $url = pick_random($pict);
     } else {
-        $url = "https://miner-killer-bot.herokuapp.com/images/asso.jpg";
+        $url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'images/asso.jpg';
     }
 
 		return $this -> send_photo($url);
@@ -171,10 +171,10 @@ class Command{
 	function appuntamento($text = ""){
 		if($this->is_reply === true){
 			if($text === "sì"){
-				$url = "https://miner-killer-bot.herokuapp.com/images/brent_contaci1.jpg";
+				$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'images/brent_contaci1.jpg';
 				$caption = '';
 			} else if($text === "no"){
-				$url = "https://miner-killer-bot.herokuapp.com/images/brent_smart_work.jpg";
+				$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'images/brent_smart_work.jpg';
 				$caption = 'Allora ti aspetto domani in ufficio!';
 			}
 			return $this -> send_photo($url,'{"remove_keyboard":true}', $caption);
