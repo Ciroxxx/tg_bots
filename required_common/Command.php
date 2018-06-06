@@ -137,8 +137,10 @@ class Command{
 	function engage($text =""){
 		if($this->is_reply === true) exit;
 		$pict = google_images_search('captain picard engage', 'lang_en');
-		$pict[] = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'images/asso.jpg';
-    if($pict){
+		$no_pict = count($pict);
+		if($no_pict == 0 || $no_pict > 3)	$pict[] = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'images/asso.jpg';
+
+		if($pict){
         $url = pick_random($pict);
     } else {
         $url = "https://miner-killer-bot.herokuapp.com/images/asso.jpg";
