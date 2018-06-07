@@ -14,7 +14,7 @@ class Command{
 
 		$this -> chat_id = $chat_id;
 
-
+      log_debug(debug_backtrace(), 'linea 17', 'x');
 		if(strpos($text, '/') === 0){// è un comando
 
 			if($at_pos = strpos($text, '@')) $text = substr($text, 0, $at_pos);//se il comando contiene la @ elimina la @botname
@@ -111,6 +111,7 @@ class Command{
 	}
 
 	function mine(){
+		log_debug($var = debug_backtrace(),'in mine', 'x');
 		if($this->is_reply === true) exit;
 		return $this -> send_text("Grazie! Con le tue risorse ho creato una monetina!!!");
 	}
