@@ -15,15 +15,15 @@ require_once("required_common/Command.php");
 require_once 'log_debug.php';
 require_once 'functions.php';
 
-log_debug($var = debug_backtrace(), 'linea 18', 'x');
+
 if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
-log_debug(debug_backtrace(), 'linea 20', 'x');
+
       $BOT_NAME = $_GET["bot_name"];
       $TOKEN = $bots[$BOT_NAME]["token"];
 
       if($_GET["do"] && array_key_exists($_GET["do"], $bots[$BOT_NAME]["commands"])){//se è un'azione autonoma del bot
         $do = '/' . $_GET["do"];
-  log_debug(debug_backtrace(), 'linea 26', 'x');
+
     		if($do){
     			$chat_id = $_GET["chat_id"];
 
@@ -58,7 +58,7 @@ log_debug(debug_backtrace(), 'linea 20', 'x');
     		}
 
     } else {
-      log_debug(debug_backtrace(), 'linea 61', 'x');
+
         if($_SERVER['REMOTE_ADDR'] === "127.0.0.1" && 0){//se è in locale fornisco io dei valori dummy
             $content = '{"message" : {"message_id" : "666", "chat" : {"id" : "999"}, "date" : "1234654", "text" : "/mine","entities" : [{"type" : "bot_command"}]}}';
         } else {
@@ -67,13 +67,11 @@ log_debug(debug_backtrace(), 'linea 20', 'x');
 
         $update = json_decode($content, true);
 
-        log_debug($update, 'logging $update');
-
         if(!$update)
         {
           exit('false update variable');
         }
-      log_debug(debug_backtrace(), 'linea 76', 'x');
+
 		    $message = isset($update['message']) ? $update['message'] : "";
         $messageId = isset($message['message_id']) ? $message['message_id'] : "";
 		    $chat_id = isset($message['chat']['id']) ? $message['chat']['id'] : "";
@@ -85,7 +83,7 @@ log_debug(debug_backtrace(), 'linea 20', 'x');
 		    $command = new Command($BOT_NAME, $chat_id, $text, $message);
 
 		    if($command){
-                log_debug(debug_backtrace(), 'linea 88', 'x');
+
 			      $response = $command -> response;
 		    }
 
