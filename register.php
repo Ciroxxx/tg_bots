@@ -23,7 +23,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
     curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 5);
     curl_setopt($handle, CURLOPT_TIMEOUT, 60);
-    $result = exec_curl_request($handle);
+    $result = curl_exec($handle);
     print_r($result);
 
 } else {
