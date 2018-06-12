@@ -21,7 +21,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
       $BOT_NAME = $_GET["bot_name"];
       $TOKEN = $bots[$BOT_NAME]["token"];
 
-      if($_GET["do"] && array_key_exists($_GET["do"], $bots[$BOT_NAME]["commands"])){//se è un'azione autonoma del bot
+      if(isset($_GET["do"]) && array_key_exists($_GET["do"], $bots[$BOT_NAME]["commands"])){//se è un'azione autonoma del bot
         $do = '/' . $_GET["do"];
 
     		if($do){
@@ -88,10 +88,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 		    }
 
 
-        header("Content-Type: application/json");
-
-        echo json_encode($response);
-        log_debug($response, 'linea 96 response');
+        apiRequestWebhook("sendMessage", array('chat_id' => $chat_id, "reply_to_message_id" => '1365', "text" => 'Cool'));
     }
 
 } else {

@@ -111,7 +111,7 @@ class Command{
 	}
 
 	function mine(){
-		
+
 		if($this->is_reply === true) exit;
 		return $this -> send_text("Grazie! Con le tue risorse ho creato una monetina!!!");
 	}
@@ -181,9 +181,9 @@ class Command{
 			return $this -> send_photo($url,'{"remove_keyboard":true}', $caption);
 		} else {
 			$appuntamento = array(
-				"proposta" => array("ci incontriamo a mensa ", "ci vediamo a pranzo ", "perchè non facciamo un giro in moto ", "ci vogliamo vedere al cinema ", "facciamo due passi ", "potremmo fare a pranzo "),
-				"tempo" => array("domani ", "nel pomeriggio ", "stasera ", "tra una settimana ", "l'anno prossimo ", "ieri ", "l'altro giorno "),
-				"luogo" => array("a Triparni?", "ai Due Mari?", "al River Village?", "a Cosenza?", "a Lamezia?", "a Chicago?", "a Sannazzaro ")
+				"proposta" => array("ci incontriamo a mensa ", "ci vediamo a pranzo ", "perchè non facciamo un giro in moto ", "ci vogliamo vedere al cinema ", "facciamo due passi ", "potremmo fare a pranzo ", "facciamo una rissa da strada senza esclusione di colpi ", "Facciamo a palate ", "Andiamo a mignotte "),
+				"tempo" => array("domani ", "nel pomeriggio ", "stasera ", "tra una settimana ", "l'anno prossimo ", "ieri ", "l'altro giorno ", "tra " . rand(2,10) . "precisi "),
+				"luogo" => array("a Triparni?", "ai Due Mari?", "al River Village?", "a Cosenza?", "a Lamezia?", "a Chicago?", "a Sannazzaro?")
 			);
 			$proposta = "";
 
@@ -193,5 +193,10 @@ class Command{
 			$encodedKeyboard = json_encode(array("keyboard" => array(array("sì", "no")),"resize_keyboard" => true,"one_time_keyboard" => true));
 			return $this -> send_text($proposta, $encodedKeyboard);
 		}
+	}
+
+	function araldica($text = ""){
+		if($this->is_reply === true) exit;
+		return $this -> send_text("VonVikingBlizingAnnunakWulfricBlackBotZumaKangarooAztecCrocoWild3DFractalTPill");
 	}
 }
