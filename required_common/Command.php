@@ -113,7 +113,7 @@ class Command{
 	function mine(){
 
 		if($this->is_reply === true) exit;
-		return $this -> send_text("Grazie! Con le tue risorse ho creato una monetina!!!");
+		return $this -> send_text("Grazie! Con le tue risorse ho creato una bit-moneta!!!");
 	}
 
 	function gnocca(){
