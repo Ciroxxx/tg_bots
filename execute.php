@@ -87,8 +87,8 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 			      $response = $command -> response;
 		    }
 
-
-        apiRequestWebhook("sendMessage", array('chat_id' => $chat_id, "reply_to_message_id" => '1365', "text" => 'Cool'));
+        header("Content-Type: application/json");
+        echo json_encode($response);
     }
 
 } else {
