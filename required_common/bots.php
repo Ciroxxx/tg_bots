@@ -31,7 +31,7 @@ $bots = array(
         ),
     "viking" =>
         array(
-            "token" => "537957531:AAHxoqtIT5DvZFI3fNH_U1A1CRXz5pstOSY",
+            "token" => "567065671:AAFc7q4ADo7E3Pj00RfG6oMlahXjVrmZMlE",
             "commands" => array(
                 "start" => array(),
                 "araldica" => array(),

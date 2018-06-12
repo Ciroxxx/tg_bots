@@ -1,0 +1,6 @@
+{
+  "name": "tg_bots",
+  "description": "few telegram bots to mimic friend's behaviour",
+  "repository": "https://github.com/Ciroxxx/tg_bots.git",
+  "keywords": ["php", "telegram", "bot"]
+}
