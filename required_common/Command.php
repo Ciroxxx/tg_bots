@@ -100,13 +100,6 @@ class Command{
 		return $response;
 	}
 
-	function send_video_as_doc($url = "", $caption = ""){
-		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'gif/k02.mp4';
-		$response = array("chat_id" => $this -> chat_id, "document" => $url, "method" => "sendDocument");
-		if($caption) $response['caption'] = $caption;
-		return $response;
-	}
-
 	function send_video_as_video($url = "", $caption = ""){
 		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'gif/k02.mp4';
 		$response = array("chat_id" => $this -> chat_id, "video" => $url, "method" => "sendVideo");
@@ -114,16 +107,9 @@ class Command{
 		return $response;
 	}
 
-	function send_gif_as_video($url = "", $caption = ""){
-		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'gif/eyes.gif';
-		$response = array("chat_id" => $this -> chat_id, "video" => $url, "method" => "sendVideo");
-		if($caption) $response['caption'] = $caption;
-		return $response;
-	}
-
 	function start($firstname = ''){
 		if($this->is_reply === true) exit;
-		return $this -> send_text("Ciao $firstname, ti stimo");
+		return $this -> send_text("Ciao, ti stimo");
 	}
 
 	function kill(){//non usato
@@ -227,5 +213,12 @@ class Command{
 	function araldica($text = ""){
 		if($this->is_reply === true) exit;
 		return $this -> send_text("VonVikingBlizingAnnunakWulfricBlackBotZumaKangarooAztecCrocoWild3DFractalTPill");
+	}
+
+	function kangaroo($text = ""){
+		if($this->is_reply === true) exit;
+
+		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/gif//kangaroo/k' . rand(0,10) . '.mp4';
+		return $this -> send_video_as_video($url);
 	}
 }
