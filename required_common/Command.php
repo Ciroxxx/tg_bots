@@ -93,7 +93,8 @@ class Command{
 	}
 
 	function send_gif_as_doc($url = "", $caption = ""){
-		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'gif/eyes.gif';
+		//$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'gif/eyes.gif';
+		$url = "https://media.giphy.com/media/7T2Ab5xaR2m7jsdJj4/giphy.gif";
 		$response = array("chat_id" => $this -> chat_id, "document" => $url, "method" => "sendDocument");
 		if($caption) $response['caption'] = $caption;
 		return $response;
