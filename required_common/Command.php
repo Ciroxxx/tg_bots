@@ -92,15 +92,29 @@ class Command{
 		return array("chat_id" => $this -> chat_id, "voice" => $url, "method" => "sendVoice");
 	}
 
-	function send_gif($url = "", $caption = ""){
+	function send_gif_as_doc($url = "", $caption = ""){
 		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'gif/eyes.gif';
 		$response = array("chat_id" => $this -> chat_id, "document" => $url, "method" => "sendDocument");
 		if($caption) $response['caption'] = $caption;
 		return $response;
 	}
 
-	function send_video($url = "", $caption = ""){
+	function send_video_as_doc($url = "", $caption = ""){
 		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'gif/k02.mp4';
+		$response = array("chat_id" => $this -> chat_id, "document" => $url, "method" => "sendDocument");
+		if($caption) $response['caption'] = $caption;
+		return $response;
+	}
+
+	function send_video_as_video($url = "", $caption = ""){
+		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'gif/k02.mp4';
+		$response = array("chat_id" => $this -> chat_id, "video" => $url, "method" => "sendVideo");
+		if($caption) $response['caption'] = $caption;
+		return $response;
+	}
+
+	function send_gif_as_video($url = "", $caption = ""){
+		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'gif/eyes.gif';
 		$response = array("chat_id" => $this -> chat_id, "video" => $url, "method" => "sendVideo");
 		if($caption) $response['caption'] = $caption;
 		return $response;

@@ -43,8 +43,10 @@ $bots = array(
               "token" => "598000419:AAH7f58MfMbqZN3a7lu5DpZCVi8v10Rfnp4",
               "commands" => array(
                   "start" => array(),
-                  "send_gif" => array(),
-                  "send_video" => array()
+                  "send_gif_as_doc" => array(),
+                  "send_video_as_doc" => array(),
+                  "send_video_as_video" => array(),
+                  "send_gif_as_video" => array(),
               )
           )
 );
