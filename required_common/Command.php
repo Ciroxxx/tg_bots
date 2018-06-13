@@ -217,7 +217,7 @@ class Command{
 	function cangurizza($text = ""){
 		if($this->is_reply === true) exit;
 
-		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/gif//kangaroo/k' . rand(0,10) . '.mp4';
+		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/gif/kangaroo/k' . rand(0,10) . '.mp4';
 		return $this -> send_video_as_video($url);
 	}
 }
