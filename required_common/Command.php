@@ -92,6 +92,20 @@ class Command{
 		return array("chat_id" => $this -> chat_id, "voice" => $url, "method" => "sendVoice");
 	}
 
+	function send_gif($url = "", $caption = ""){
+		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'gif/eyes.gif';
+		$response = array("chat_id" => $this -> chat_id, "document" => $url, "method" => "sendDocument");
+		if($caption) $response['caption'] = $caption;
+		return $response;
+	}
+
+	function send_video($url = "", $caption = ""){
+		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'gif/k02.mp4';
+		$response = array("chat_id" => $this -> chat_id, "video" => $url, "method" => "sendVideo");
+		if($caption) $response['caption'] = $caption;
+		return $response;
+	}
+
 	function start($firstname = ''){
 		if($this->is_reply === true) exit;
 		return $this -> send_text("Ciao $firstname, ti stimo");

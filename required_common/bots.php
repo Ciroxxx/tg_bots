@@ -37,7 +37,16 @@ $bots = array(
                 "araldica" => array(),
                 "kangaroo" => array()
             )
-        )
+        ),
+      "ferex_test" =>
+          array(
+              "token" => "598000419:AAH7f58MfMbqZN3a7lu5DpZCVi8v10Rfnp4",
+              "commands" => array(
+                  "start" => array(),
+                  "send_gif" => array(),
+                  "send_video" => array()
+              )
+          )
 );
 
 //to delete a webhook https://api.telegram.org/bot572812206:AAERyKASDR4TIqwJiPnt17bNSE0kCwkazB8/setwebhook LINK:https://stackoverflow.com/questions/32537081/how-to-use-getupdates-after-setwebhook-in-telegram-bot-api
