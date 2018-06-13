@@ -35,7 +35,7 @@ $bots = array(
             "commands" => array(
                 "start" => array(),
                 "araldica" => array(),
-                "kangaroo" => array()
+                "cangurizza" => array()
             )
         ),
       "ferex_test" =>
@@ -44,7 +44,7 @@ $bots = array(
               "commands" => array(
                   "start" => array(),
                   "send_gif_as_doc" => array(),
-                  "send_video_as_video" => array()                  
+                  "send_video_as_video" => array()
               )
           )
 );

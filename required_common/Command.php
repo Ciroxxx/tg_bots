@@ -215,7 +215,7 @@ class Command{
 		return $this -> send_text("VonVikingBlizingAnnunakWulfricBlackBotZumaKangarooAztecCrocoWild3DFractalTPill");
 	}
 
-	function kangaroo($text = ""){
+	function cangurizza($text = ""){
 		if($this->is_reply === true) exit;
 
 		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/gif//kangaroo/k' . rand(0,10) . '.mp4';
