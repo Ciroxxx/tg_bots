@@ -9,10 +9,7 @@ use Aws\Exception\AwsException;
 $s3 = new S3Client([
     'region' => 'eu-west-3',
     'version' => 'latest',
-    'credentials' => [
-        'key'    => 'AKIAI3DSZ2ZLFW72RYFA',
-        'secret' => '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',
-    ]
+    'credentials' => false
 ]);
 
 $bucket = 'tg-bots';
