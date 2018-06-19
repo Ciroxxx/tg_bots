@@ -7,8 +7,8 @@ $bots = array(
             "commands" => array(
 				        "start" => array(),
                 "mine" => array("panel"),
-                "killz" => array("panel"),
-                "gnocca" => array("panel")
+                "gnocca" => array("panel"),
+                "gif" => array("panel")                
             )
         ),
     "brent" =>

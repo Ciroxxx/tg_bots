@@ -144,3 +144,44 @@ function check_right_command($COMMAND, $BOT_NAME){
 function get_protocol(){
   return !empty($_SERVER['HTTPS']) ? 'https' : 'http';
 }
+
+
+function access_s3($folder = "gifferex"){
+  require 'vendor/autoload.php';
+
+  use Aws\S3\S3Client;
+  use Aws\Exception\AwsException;
+
+  //Create a S3Client
+  $s3 = new S3Client([
+      'region' => 'eu-west-3',
+      'version' => 'latest',
+      'credentials' => false
+  ]);
+
+  $bucket = 'tg-bots';
+
+  // Use the high-level iterators (returns ALL of your objects).
+  try {
+      $objects = $s3->getPaginator('ListObjects', [
+          'Bucket' => $bucket,
+          'Prefix' => $folder . '/'
+      ]);
+
+      //echo "Keys retrieved!" . PHP_EOL;
+      $retrieved_files = array();
+      foreach ($objects as $object) {
+        //echo '<pre>' . print_r($object, 1) . '</pre>';
+        foreach($object['Contents'] as $content){
+          //echo $content['Key'] . PHP_EOL;
+          //echo '<pre>' . print_r($content, 1) . '</pre>';
+          //echo '<pre>' . print_r($s3 -> getObjectUrl($bucket, $content['Key']), 1) . '</pre>';
+          $retrieved_files[] = $s3 -> getObjectUrl($bucket, $content['Key']);
+        }
+      }
+    return count($retrieved_files) ? $retrieved_files : 0;
+  } catch (S3Exception $e) {
+      //echo $e->getMessage() . PHP_EOL;
+      trigger_error($e->getMessage(), E_USER_ERROR);
+  }
+}

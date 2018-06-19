@@ -18,7 +18,7 @@ $bucket = 'tg-bots';
 try {
     $objects = $s3->getPaginator('ListObjects', [
         'Bucket' => $bucket,
-        'Prefix' => 'gifferex/'
+        'Prefix' => 'gif/'
     ]);
 
     echo "Keys retrieved!" . PHP_EOL;

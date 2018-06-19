@@ -221,4 +221,11 @@ class Command{
 		log_debug($url, 'url in cangurizza');
 		return $this -> send_video_as_video($url);
 	}
+
+	function gif($text = ""){
+		if($this->is_reply === true) exit;
+
+		$url = pick_random(access_s3("gifferex"));
+		return $this -> send_video_as_video($url);
+	}
 }
