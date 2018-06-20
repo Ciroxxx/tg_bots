@@ -147,10 +147,6 @@ function get_protocol(){
 
 
 function access_s3($folder = "gifferex"){
-  require 'vendor/autoload.php';
-
-  use Aws\S3\S3Client;
-  use Aws\Exception\AwsException;
 
   //Create a S3Client
   $s3 = new S3Client([

@@ -11,6 +11,10 @@ text
 require_once("required_common/bots.php");
 require_once("required_common/Command.php");
 
+require 'vendor/autoload.php';
+
+use Aws\S3\S3Client;
+use Aws\Exception\AwsException;
 
 require_once 'log_debug.php';
 require_once 'functions.php';
