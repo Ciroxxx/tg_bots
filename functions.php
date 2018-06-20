@@ -147,7 +147,7 @@ function get_protocol(){
 
 
 function access_s3($folder = "gifferex"){
-
+  global $s3;
   $bucket = 'tg-bots';
 
   // Use the high-level iterators (returns ALL of your objects).
