@@ -196,7 +196,7 @@ class Command{
 		} else {
 			$appuntamento = array(
 				"proposta" => array("ci incontriamo a mensa ", "ci vediamo a pranzo ", "perchè non facciamo un giro in moto ", "ci vogliamo vedere al cinema ", "facciamo due passi ", "potremmo fare a pranzo ", "facciamo una rissa da strada senza esclusione di colpi ", "facciamo a palate ", "andiamo a mignotte "),
-				"tempo" => array("domani ", "nel pomeriggio ", "stasera ", "tra una settimana ", "l'anno prossimo ", "ieri ", "l'altro giorno ", "tra " . rand(2,10) . "precisi "),
+				"tempo" => array("domani ", "nel pomeriggio ", "stasera ", "tra una settimana ", "l'anno prossimo ", "ieri ", "l'altro giorno ", "tra " . rand(2,10) . " minuti precisi "),
 				"luogo" => array("a Triparni?", "ai Due Mari?", "al River Village?", "a Cosenza?", "a Lamezia?", "a Chicago?", "a Sannazzaro?")
 			);
 			$proposta = "";

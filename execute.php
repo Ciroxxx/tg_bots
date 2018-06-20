@@ -16,6 +16,15 @@ require 'vendor/autoload.php';
 use Aws\S3\S3Client;
 use Aws\Exception\AwsException;
 
+//Create a S3Client
+global $s3;
+
+$s3 = new S3Client([
+    'region' => 'eu-west-3',
+    'version' => 'latest',
+    'credentials' => false
+]);
+
 require_once 'log_debug.php';
 require_once 'functions.php';
 

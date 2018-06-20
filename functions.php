@@ -148,13 +148,6 @@ function get_protocol(){
 
 function access_s3($folder = "gifferex"){
 
-  //Create a S3Client
-  $s3 = new S3Client([
-      'region' => 'eu-west-3',
-      'version' => 'latest',
-      'credentials' => false
-  ]);
-
   $bucket = 'tg-bots';
 
   // Use the high-level iterators (returns ALL of your objects).
