@@ -133,7 +133,7 @@ class Command{
 	function gnocca(){
 		$words = array('sexy', 'gnocca', 'gambe sexy', 'sexy bikini', 'bocca sexy', 'belle tette', 'figona');
 		if($this->is_reply === true) exit;
-		$gnocca = google_images_search(pick_random($words . ' soft'));
+		$gnocca = google_images_search(pick_random($words));
         if($gnocca){
             $url = pick_random($gnocca);
 
@@ -211,13 +211,15 @@ class Command{
 
 	function araldica($text = ""){
 		if($this->is_reply === true) exit;
-		return $this -> send_text("VonVikingBlizingAnnunakWulfricBlackBotZumaKangarooAztecCrocoWild3DFractalTPill");
+		$caption = "Chi osa conferire con\n\nVonVikingBlizingAnnunakWulfricBlackBotZumaKangarooAztecCrocoWild3DFractalTPill";
+		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'images/araldica.jpg';
+		return $this -> send_photo($url, '', $caption);
 	}
 
 	function cangurizza($text = ""){
 		if($this->is_reply === true) exit;
 
-		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/gif/kangaroo/k' . rand(0,10) . '.mp4';
+		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/gif/kangaroo/k' . rand(0,12) . '.mp4';
 		log_debug($url, 'url in cangurizza');
 		return $this -> send_video_as_video($url);
 	}
