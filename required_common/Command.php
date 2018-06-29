@@ -75,19 +75,19 @@ class Command{
 		return array("chat_id" => $this -> chat_id, "text" => "hai sbagliato bot :-(", "method" => "sendMessage");
 	}
 
-	function send_text($text, $reply_markup = ""){
+	function send_text($text, $reply_markup = '{"remove_keyboard":true}'){
 		$response = array("chat_id" => $this -> chat_id, "text" => $text, "method" => "sendMessage", "reply_markup" => $reply_markup);
 		return $response;
 	}
 
-	function send_photo($url, $reply_markup = "", $caption = ""){
+	function send_photo($url, $reply_markup = '{"remove_keyboard":true}', $caption = ""){
 		$response = array("chat_id" => $this -> chat_id, "photo" => $url, "method" => "sendPhoto", "reply_markup" => $reply_markup);
 
 		if($caption) $response['caption'] = $caption;
 		return $response;
 	}
 
-	function send_voice($url, $reply_markup = ""){
+	function send_voice($url, $reply_markup = '{"remove_keyboard":true}'){
 		return array("chat_id" => $this -> chat_id, "voice" => $url, "method" => "sendVoice", "reply_markup" => $reply_markup);
 	}
 
@@ -99,7 +99,7 @@ class Command{
 		return $response;
 	}
 
-	function send_video_as_video($url = "", $caption = "", $reply_markup = ""){
+	function send_video_as_video($url = "", $caption = "", $reply_markup = '{"remove_keyboard":true}'){
 		$response = array("chat_id" => $this -> chat_id, "video" => $url, "method" => "sendVideo", "reply_markup" => $reply_markup);
 		if($caption) $response['caption'] = $caption;
 		return $response;

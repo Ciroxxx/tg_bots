@@ -1,1 +1,1 @@
-<?php echo "Silence is king";
+<?php echo "Silence is goldings";
