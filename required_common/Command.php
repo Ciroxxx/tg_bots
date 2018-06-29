@@ -81,14 +81,14 @@ class Command{
 	}
 
 	function send_photo($url, $reply_markup = "", $caption = ""){
-		$response = array("chat_id" => $this -> chat_id, "photo" => $url, "method" => "sendPhoto");
-		if($reply_markup) $response["reply_markup"] = $reply_markup;
+		$response = array("chat_id" => $this -> chat_id, "photo" => $url, "method" => "sendPhoto", "reply_markup" => $reply_markup);
+
 		if($caption) $response['caption'] = $caption;
 		return $response;
 	}
 
 	function send_voice($url, $reply_markup = ""){
-		return array("chat_id" => $this -> chat_id, "voice" => $url, "method" => "sendVoice");
+		return array("chat_id" => $this -> chat_id, "voice" => $url, "method" => "sendVoice", "reply_markup" => $reply_markup);
 	}
 
 	function send_gif_as_doc($url = "", $caption = ""){
@@ -99,8 +99,8 @@ class Command{
 		return $response;
 	}
 
-	function send_video_as_video($url = "", $caption = ""){
-		$response = array("chat_id" => $this -> chat_id, "video" => $url, "method" => "sendVideo");
+	function send_video_as_video($url = "", $caption = "", $reply_markup = ""){
+		$response = array("chat_id" => $this -> chat_id, "video" => $url, "method" => "sendVideo", "reply_markup" => $reply_markup);
 		if($caption) $response['caption'] = $caption;
 		return $response;
 	}
