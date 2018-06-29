@@ -21,7 +21,8 @@ $bots = array(
             "token" => "435363970:AAE96UAhhQCcpa3B6bnj36WGnBh63i2z0cM",
             "commands" => array(
 			          "start" => array(),
-                "appuntamento" => array("panel")
+                "appuntamento" => array("panel"),
+                "brentize" => array()
             )
         ),
     "captain" =>
@@ -40,7 +41,9 @@ $bots = array(
             "commands" => array(
                 "start" => array(),
                 "araldica" => array(),
-                "cangurizza" => array()
+                "cangurizza" => array(),
+                "vkthinks" => array(),
+                "sdegno" => array()
             )
         ),
       "ferex_test" =>

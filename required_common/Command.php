@@ -219,8 +219,7 @@ class Command{
 	function cangurizza($text = ""){
 		if($this->is_reply === true) exit;
 
-		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/gif/kangaroo/k' . rand(0,12) . '.mp4';
-		log_debug($url, 'url in cangurizza');
+		$url = pick_random(access_s3("cangurizza"));
 		return $this -> send_video_as_video($url);
 	}
 
@@ -228,6 +227,26 @@ class Command{
 		if($this->is_reply === true) exit;
 
 		$url = pick_random(access_s3("gifferex"));
+		return $this -> send_video_as_video($url);
+	}
+
+	function sdegno($text = ""){
+		if($this->is_reply === true) exit;
+		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'images/sdegno.jpg';
+		return $this -> send_photo($url, '');
+	}
+
+	function vkthinks($text = ""){
+		if($this->is_reply === true) exit;
+
+		$url = pick_random(access_s3("vkthinks"));
+		return $this -> send_video_as_video($url);
+	}
+
+	function brentize($text = ""){
+		if($this->is_reply === true) exit;
+
+		$url = pick_random(access_s3("brentize"));
 		return $this -> send_video_as_video($url);
 	}
 }
