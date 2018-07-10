@@ -169,14 +169,14 @@ class Command{
 		switch($this -> bot_name){
 			case "ferick":
 			    $url = pick_random(access_s3("FeRickThiks"));
+					log_debug($url, 'url in ferick thinks');
+					return $this -> send_video_as_video($url);
 					break;
 			case "captain":
 			    $url = pick_random(access_s3("captain_thinks"));
+					return $this -> send_photo($url);
 					break;
 		}
-
-		return $this -> send_photo($url);
-
 	}
 
 	function smartwork($text =""){
