@@ -123,7 +123,7 @@ class Command{
 		return $this -> send_text("bang! Sei morto stronzo/a", $reply_markup);
 	}
 
-	function mine(){
+	function mine(){//non usato
 
 		if($this->is_reply === true) exit;
 		return $this -> send_text("Grazie! Con le tue risorse ho creato una bit-moneta!!!");
@@ -143,7 +143,7 @@ class Command{
 		return $this -> send_photo($url);
 	}
 
-	function killz(){
+	function killz(){//non usato
 		if($this->is_reply === true) exit;
 		return $this -> send_voice(get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'audio/killz.mp3');
 	}
@@ -213,9 +213,40 @@ class Command{
 		}
 	}
 
+	function get_info($url = "https://s3.eu-west-3.amazonaws.com/tg-bots/araldica.txt"){
+
+
+	  $ch = curl_init($url);
+
+	  $curl_options = array(
+	      CURLOPT_RETURNTRANSFER => true,   // return web page
+	      CURLOPT_HEADER         => false,  // don't return headers
+	      CURLOPT_FOLLOWLOCATION => true,   // follow redirects
+	      CURLOPT_MAXREDIRS      => 10,     // stop after 10 redirects
+	      CURLOPT_ENCODING       => "",     // handle compressed
+	      CURLOPT_USERAGENT      => "test", // name of client
+	      CURLOPT_AUTOREFERER    => true,   // set referrer on redirect
+	      CURLOPT_CONNECTTIMEOUT => 120,    // time-out on connect
+	      CURLOPT_TIMEOUT        => 120,    // time-out on response
+	  );
+
+
+	  curl_setopt_array($ch, $curl_options);
+
+	  $results = curl_exec($ch);
+
+	  return $results;
+
+	}
+
 	function araldica($text = ""){
 		if($this->is_reply === true) exit;
-		$caption = "Chi osa conferire con\n\nVonVikingBlizingAnnunakWulfricBlackBotZumaKangarooAztecCrocoWild3DFractalTPill";
+
+		$araldica = get_info();
+
+		$araldica = $araldica ? $araldica : "VonVikingBlizingAnnunakWulfricBlackBotZumaKangarooAztecCrocoWild3DFractalTPill";
+
+		$caption = "Chi osa conferire con\n\n" . $araldica;
 		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'images/araldica.jpg';
 		return $this -> send_photo($url, '', $caption);
 	}
