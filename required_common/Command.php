@@ -242,7 +242,7 @@ class Command{
 	function araldica($text = ""){
 		if($this->is_reply === true) exit;
 
-		$araldica = get_info();
+		$araldica = $this -> get_info();
 
 		$araldica = $araldica ? $araldica : "VonVikingBlizingAnnunakWulfricBlackBotZumaKangarooAztecCrocoWild3DFractalTPill";
 
