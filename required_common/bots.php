@@ -15,7 +15,8 @@ $bots = array(
                 "gnocca" => array("panel"),
                 "gif" => array("panel"),
                 "think" => array()
-            )
+            ),
+            "panel" => true
         ),
     "brent" =>
         array(
@@ -24,7 +25,8 @@ $bots = array(
 			          "start" => array(),
                 "appuntamento" => array("panel"),
                 "brentize" => array()
-            )
+            ),
+            "panel" => true
         ),
     "captain" =>
         array(
@@ -34,7 +36,8 @@ $bots = array(
                 "think" => array(),
                 "engage" => array(),
                 "smartwork" => array()
-            )
+            ),
+            "panel" => true
         ),
     "viking" =>
         array(
@@ -45,7 +48,8 @@ $bots = array(
                 "cangurizza" => array(),
                 "vkthinks" => array(),
                 "sdegno" => array()
-            )
+            ),
+            "panel" => true
         ),
       "ferex_test" =>
           array(
@@ -54,7 +58,8 @@ $bots = array(
                   "start" => array(),
                   "send_gif_as_doc" => array(),
                   "send_video_as_video" => array()
-              )
+              ),
+              "panel" => false
           )
 );
 

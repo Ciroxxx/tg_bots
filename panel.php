@@ -60,12 +60,14 @@ if((isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)) && $
                   <option value="0"></option>
 
 <?php
-                  foreach($bots as $key => $value){
-					  if($_GET['bot_name'] === $key){
-						  echo '<option value="' . $key .'" selected>' . ucfirst($key) . '</option>';
-					  } else {
-						  echo '<option value="' . $key .'">' . ucfirst($key) . '</option>';
-					  }
+          foreach($bots as $key => $value){
+						if($value['panel'] === true ){
+							if($_GET['bot_name'] === $key){
+							  echo '<option value="' . $key .'" selected>' . ucfirst($key) . '</option>';
+						  } else {
+							  echo '<option value="' . $key .'">' . ucfirst($key) . '</option>';
+						  }
+						}
 				  }
 ?>
                 </select>
