@@ -166,9 +166,14 @@ class Command{
 	function think($text =""){
 		if($this->is_reply === true) exit;
 
-		$files = array('pickard_smile.jpg', 'pickard_sad1.jpg', 'pickard_hide.jpg', 'pickard_cmon.jpg', 'pickard_fuck.jpg', 'pickard_dontell.jpg', 'pickard_win.jpg', 'asso.jpg');
-
-		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/images/' . pick_random($files);
+		switch($this -> bot_name){
+			case "ferick":
+			    $url = pick_random(access_s3("FeRickThiks"));
+					break;
+			case "captain":
+			    $url = pick_random(access_s3("captain_thinks"));
+					break;
+		}
 
 		return $this -> send_photo($url);
 

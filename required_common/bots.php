@@ -10,10 +10,11 @@ $bots = array(
         array(
             "token" => "594696565:AAGJ8_I_LxUI2lS5iViYppfJToGWXXENjt8",
             "commands" => array(
-				        "start" => array(),
-                "mine" => array("panel"),
+				        //"start" => array(),
+                //"mine" => array("panel"),
                 "gnocca" => array("panel"),
-                "gif" => array("panel")
+                "gif" => array("panel"),
+                "think" => array()
             )
         ),
     "brent" =>
