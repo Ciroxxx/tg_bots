@@ -250,7 +250,7 @@ class Command{
 		$caption = "Chi osa conferire con\n\n" . $araldica;
 		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'images/araldica.jpg';
 
-		$this -> callback = "araldicgif";
+		$this -> callback = "mine";
 		return $this -> send_photo($url, '', $caption);
 	}
 
