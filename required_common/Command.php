@@ -8,6 +8,7 @@ class Command{
 	public $response = '';
 	public $chat_id;
 	public $bot_name;
+	public $callback = false;
 
 	function __construct($bot_name = "miner", $chat_id = 113,$text = "/start", $message = ""){
 		global $bots;
@@ -248,6 +249,8 @@ class Command{
 
 		$caption = "Chi osa conferire con\n\n" . $araldica;
 		$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'images/araldica.jpg';
+
+		$this -> callback = array("araldicgif");
 		return $this -> send_photo($url, '', $caption);
 	}
 
@@ -283,5 +286,19 @@ class Command{
 
 		$url = pick_random(access_s3("brentize"));
 		return $this -> send_video_as_video($url);
+	}
+
+  function araldicgif($text = ""){
+		if($this->is_reply === true) exit;
+
+		$url = pick_random(access_s3("AraldicGif"));
+		log_debug($url, 'url in araldicgif command');
+		return $this -> send_video_as_video($url);
+	}
+
+	function test($text = ""){
+		if($this->is_reply === true) exit;
+
+		return $this -> araldica();
 	}
 }
