@@ -102,7 +102,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 
         header("Content-Type: application/json");
 
-        $response = array("chat_id" => $this -> chat_id, "text" => array("ciao", "stronzo"), "method" => "sendMessage", "reply_markup" => $reply_markup);
+        $response = array("chat_id" => "92219874", "text" => array("ciao", "stronzo"), "method" => "sendMessage");
 
         echo json_encode($response);
 
