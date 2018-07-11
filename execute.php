@@ -101,16 +101,19 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 		    }
 
         header("Content-Type: application/json");
+
+        $response = array("chat_id" => $this -> chat_id, "text" => array("ciao", "stronzo"), "method" => "sendMessage", "reply_markup" => $reply_markup);
+
         echo json_encode($response);
 
-        if($command -> callback !== false){
-            log_debug($command -> callback, 'if check true');
-            $callback_response = call_user_func_array(array($command, $command -> callback), array());
-            sleep(2);
-            log_debug($callback_response, '$callback_response');
-            header("Content-Type: application/json");
-            echo json_encode($callback_response);
-        }
+        // if($command -> callback !== false){
+        //     log_debug($command -> callback, 'if check true');
+        //     $callback_response = call_user_func_array(array($command, $command -> callback), array());
+        //     sleep(2);
+        //     log_debug($callback_response, '$callback_response');
+        //
+        //     echo json_encode($callback_response);
+        // }
     }
 
 } else {
