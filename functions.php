@@ -27,12 +27,14 @@ function exec_curl_request($handle) {
   if ($response === false) {
     $errno = curl_errno($handle);
     $error = curl_error($handle);
+    log_debug($error, 'debugging curl error');
     error_log("Curl returned error $errno: $error\n");
     curl_close($handle);
     return false;
   }
 
   $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
+  log_debug($http_code, 'logging $http_code');
   curl_close($handle);
 
   if ($http_code >= 500) {

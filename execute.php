@@ -106,14 +106,17 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
         echo json_encode($response);
 
         if($command -> callback !== false){
+            sleep(5);
             log_debug($command -> callback, 'if check true');
             $callback_response = call_user_func_array(array($command, $command -> callback), array());
 
             log_debug($callback_response, '$callback_response');
             $TOKEN = $bots[$BOT_NAME]["token"];
             $website= $website . $TOKEN;
+            log_debug($website, 'debugging website');
             $ch = curl_init($website . '/' . $callback_response["method"]);
             unset($callback_response["method"]);
+            log_debug($callback_response, 'debugging $callback_response to curl');
             curl_setopt($ch, CURLOPT_HEADER, false);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_POST, 1);
