@@ -106,7 +106,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
         echo json_encode($response);
 
         if($command -> callback !== false){
-            sleep(5);
+            sleep(10);
             log_debug($command -> callback, 'if check true');
             $callback_response = call_user_func_array(array($command, $command -> callback), array());
 
