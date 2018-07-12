@@ -28,6 +28,7 @@ $s3 = new S3Client([
 require_once 'log_debug.php';
 require_once 'functions.php';
 
+$website = "https://api.telegram.org/bot";
 
 if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 
@@ -48,7 +49,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
             }
 
 
-            $website="https://api.telegram.org/bot" . $TOKEN;
+            $website= $website . $TOKEN;
 
             $params = $response;
 
@@ -110,6 +111,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 
             log_debug($callback_response, '$callback_response');
             $TOKEN = $bots[$BOT_NAME]["token"];
+            $website= $website . $TOKEN;
             $ch = curl_init($website . '/' . $callback_response["method"]);
             unset($callback_response["method"]);
             curl_setopt($ch, CURLOPT_HEADER, false);
