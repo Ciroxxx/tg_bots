@@ -105,12 +105,19 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
         echo json_encode($response);
 
         if($command -> callback !== false){
-            // log_debug($command -> callback, 'if check true');
-            // $callback_response = call_user_func_array(array($command, $command -> callback), array());
-            // sleep(2);
-            // log_debug($callback_response, '$callback_response');
-            //
-            // echo json_encode($callback_response);
+            log_debug($command -> callback, 'if check true');
+            $callback_response = call_user_func_array(array($command, $command -> callback), array());
+
+            log_debug($callback_response, '$callback_response');
+            $TOKEN = $bots[$BOT_NAME]["token"];
+            $ch = curl_init($website . '/' . $callback_response["method"]);
+            unset($callback_response["method"]);
+            curl_setopt($ch, CURLOPT_HEADER, false);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, ($callback_response));
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            exec_curl_request($ch);
         }
     }
 
