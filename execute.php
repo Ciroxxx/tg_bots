@@ -101,12 +101,14 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 			      $response = $command -> response;
 		    }
 
-        header("Content-Type: application/json");
+        //header("Content-Type: application/json");
 
-        echo json_encode($response);
+        prepare_curl_request($website= $website . $TOKEN, $command -> response);
+
+        //echo json_encode($response);
 
         if($command -> callback !== false){
-            sleep(10);
+            sleep(4);
             log_debug($command -> callback, 'if check true');
             $callback_response = call_user_func_array(array($command, $command -> callback), array());
 
@@ -114,15 +116,10 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
             $TOKEN = $bots[$BOT_NAME]["token"];
             $website= $website . $TOKEN;
             log_debug($website, 'debugging website');
-            $ch = curl_init($website . '/' . $callback_response["method"]);
+
             unset($callback_response["method"]);
             log_debug($callback_response, 'debugging $callback_response to curl');
-            curl_setopt($ch, CURLOPT_HEADER, false);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, ($callback_response));
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            exec_curl_request($ch);
+
         }
     }
 

@@ -21,6 +21,21 @@ function apiRequestWebhook($method, $parameters) {
   return true;
 }
 
+function prepare_curl_request($curl_website, $query_vars){
+  if(!$curl_website && $query_vars){
+    trigger_error('mancano parametri in prepare_curl_request', E_USER_WARNING);
+  } else {
+    $ch = curl_init($curl_website . '/' . $query_vars['method']);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, ($query_vars));
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    $response = exec_curl_request($ch);
+    return $response;
+  }
+}
+
 function exec_curl_request($handle) {
   $response = curl_exec($handle);
 
