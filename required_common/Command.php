@@ -309,4 +309,14 @@ class Command{
 
 		return $this -> araldica();
 	}
+
+	function url($text = ""){
+		$get_folder = "https://s3.eu-west-3.amazonaws.com/tg-bots/test_folder.txt";
+		if($get_folder){
+			$urls = access_s3($get_folder);
+			log_debug($urls, 'urls:');
+		} else {
+			trigger_error("didn't get folder", E_USER_WARNING);
+		}
+	}
 }
