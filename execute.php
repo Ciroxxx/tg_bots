@@ -34,6 +34,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 
       $BOT_NAME = $_GET["bot_name"];
       $TOKEN = $bots[$BOT_NAME]["token"];
+      $website = $website . $TOKEN;
 
       if(isset($_GET["do"]) && array_key_exists($_GET["do"], $bots[$BOT_NAME]["commands"])){//se è un'azione autonoma del bot
         $do = '/' . $_GET["do"];
@@ -47,9 +48,6 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
             if($command){
                 $response = $command -> response;
             }
-
-
-            $website= $website . $TOKEN;
 
             $params = $response;
 
@@ -101,26 +99,12 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 			      $response = $command -> response;
 		    }
 
-        //header("Content-Type: application/json");
-        $website= $website . $TOKEN;
         prepare_curl_request($website, $command -> response);
 
-        //echo json_encode($response);
-
         if($command -> callback !== false){
-            //sleep(4);
-            log_debug($command -> callback, 'if check true');
             $callback_response = call_user_func_array(array($command, $command -> callback), array());
 
             prepare_curl_request($website, $callback_response);
-
-            log_debug($callback_response, '$callback_response');
-            $TOKEN = $bots[$BOT_NAME]["token"];
-            $website= $website . $TOKEN;
-            log_debug($website, 'debugging website');
-
-            unset($callback_response["method"]);
-            log_debug($callback_response, 'debugging $callback_response to curl');
 
         }
     }
