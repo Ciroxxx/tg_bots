@@ -58,7 +58,8 @@ $bots = array(
                   "start" => array(),
                   "send_gif_as_doc" => array(),
                   "send_video_as_video" => array(),
-                  "test" => array()
+                  "test" => array(),
+                  "url" => array()
               ),
               "panel" => false
           )

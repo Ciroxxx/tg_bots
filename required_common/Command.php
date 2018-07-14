@@ -196,6 +196,7 @@ class Command{
 			} else if($text === "no"){
 				$url = get_protocol() . '://' . $_SERVER['HTTP_HOST'] . '/' . 'images/brent_smart_work.jpg';
 				$caption = 'Allora ti aspetto domani in ufficio!';
+				$this -> callback = "brentize";
 			}
 			return $this -> send_photo($url,'{"remove_keyboard":true}', $caption);
 		} else {
