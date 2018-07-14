@@ -102,8 +102,8 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 		    }
 
         //header("Content-Type: application/json");
-
-        prepare_curl_request($website= $website . $TOKEN, $command -> response);
+        $website= $website . $TOKEN;
+        prepare_curl_request($website, $command -> response);
 
         //echo json_encode($response);
 
@@ -112,7 +112,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
             log_debug($command -> callback, 'if check true');
             $callback_response = call_user_func_array(array($command, $command -> callback), array());
 
-            prepare_curl_request($website= $website . $TOKEN, $callback_response);
+            prepare_curl_request($website, $callback_response);
 
             log_debug($callback_response, '$callback_response');
             $TOKEN = $bots[$BOT_NAME]["token"];
