@@ -42,7 +42,7 @@ function exec_curl_request($handle) {
   if ($response === false) {
     $errno = curl_errno($handle);
     $error = curl_error($handle);
-    log_debug($error, 'debugging curl error');
+    
     error_log("Curl returned error $errno: $error\n");
     curl_close($handle);
     return false;

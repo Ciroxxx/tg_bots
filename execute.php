@@ -108,9 +108,11 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
         //echo json_encode($response);
 
         if($command -> callback !== false){
-            sleep(4);
+            //sleep(4);
             log_debug($command -> callback, 'if check true');
             $callback_response = call_user_func_array(array($command, $command -> callback), array());
+
+            prepare_curl_request($website= $website . $TOKEN, $callback_response);
 
             log_debug($callback_response, '$callback_response');
             $TOKEN = $bots[$BOT_NAME]["token"];
