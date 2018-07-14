@@ -24,7 +24,8 @@ $bots = array(
             "commands" => array(
 			          "start" => array(),
                 "appuntamento" => array("panel"),
-                "brentize" => array()
+                "brentize" => array(),
+                "brentlee" => array(),
             ),
             "panel" => true
         ),

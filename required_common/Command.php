@@ -289,6 +289,13 @@ class Command{
 		return $this -> send_video_as_video($url);
 	}
 
+	function brentlee($text = ""){
+		if($this->is_reply === true) exit;
+
+		$url = pick_random(access_s3("brentlee"));
+		return $this -> send_video_as_video($url);
+	}
+
   function araldicgif($text = ""){
 		if($this->is_reply === true) exit;
 
