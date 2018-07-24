@@ -92,6 +92,8 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
         $text = trim($text);
         $text = strtolower($text);
 
+        log_debug($message, "logging message");
+
 		    $command = new Command($BOT_NAME, $chat_id, $text, $message);
 
 		    if($command){
