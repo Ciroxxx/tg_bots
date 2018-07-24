@@ -97,7 +97,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 		    $command = new Command($BOT_NAME, $chat_id, $text, $message);
 
 		    if($command){
-            log_debug($response, "logging response");
+            log_debug($command, "logging response");
 			      $response = $command -> response;
 		    }
 
