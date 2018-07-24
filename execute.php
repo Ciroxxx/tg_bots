@@ -97,7 +97,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 		    $command = new Command($BOT_NAME, $chat_id, $text, $message);
 
 		    if($command){
-
+            log_debug($response, "logging response");
 			      $response = $command -> response;
 		    }
 
@@ -105,7 +105,7 @@ if(isset($_GET["bot_name"]) && array_key_exists($_GET["bot_name"], $bots)){
 
         if($command -> callback !== false){
             $callback_response = call_user_func_array(array($command, $command -> callback), array());
-
+            log_debug($callback_response, "logging callback_response");
             prepare_curl_request($website, $callback_response);
 
         }
