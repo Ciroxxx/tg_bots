@@ -42,7 +42,7 @@ function exec_curl_request($handle) {
   if ($response === false) {
     $errno = curl_errno($handle);
     $error = curl_error($handle);
-    
+
     error_log("Curl returned error $errno: $error\n");
     curl_close($handle);
     return false;
@@ -126,6 +126,7 @@ function google_images_search($string, $lang = "lang_it"){//gets term to search,
       }
     }
     if(count($images_url) >= 1){
+      log_debug($string, '$string from google_images_search');
       return $images_url;
     } else if($counter <= 3){
       $counter++;
