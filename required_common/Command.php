@@ -131,7 +131,7 @@ class Command{
 	}
 
 	function gnocca(){
-		$words = array('sexy porno', 'figa porno', 'gambe sexy', 'lesbo', 'tette culo', 'fetish', 'porno lingua');
+		$words = array('sexy porno', 'sexy figa', 'gambe sexy', 'lesbo', 'tette culo', 'fetish', 'porno lingua', 'donna sexy nera', 'sexy asiatica', 'sexy lamù', 'modella sexy');
 		if($this->is_reply === true) exit;
 		$gnocca = google_images_search(pick_random($words));
         if($gnocca){
